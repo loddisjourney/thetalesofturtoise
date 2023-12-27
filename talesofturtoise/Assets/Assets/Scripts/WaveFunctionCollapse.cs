@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WaveFunctionCollapse : MonoBehaviour
 {
+
+    [SerializeField] GameObject gridElement;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -12,6 +15,11 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        
+    }
+
+    public void GenerateGrid()
     {
         
     }
