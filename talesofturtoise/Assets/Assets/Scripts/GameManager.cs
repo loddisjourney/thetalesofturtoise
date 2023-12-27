@@ -23,17 +23,23 @@ public class GameManager : MonoBehaviour
                 //State while player plays by default and moves freely through the world
                 break;
             case GameState.CutScene:
-                //if player triggers an event it may 
+                //if player triggers an event it may limit his controls
                 break;
             case GameState.LoadingLevel:
+                //loading the generation of the level (while the level is generating and path is made like in GenshinImpact)
                 break;
             case GameState.GenerateGrid:
+                //genrates the basic grid of the level, it may gets different size propertys
                 break;
             case GameState.PlaceTile:
+                //if there is a free neighbor choose the lowest entropy or a random from the lowest entropy
                 break;
             case GameState.CheckNeighbors:
+                //check all neighbors and their entropy update ans update the list with all possible tiles and without the setted tiles
                 break;
             default:
+                //incase their is no specific state set it to free game
+                gameState = GameState.FreeGame;
                 break;
         }
     }
