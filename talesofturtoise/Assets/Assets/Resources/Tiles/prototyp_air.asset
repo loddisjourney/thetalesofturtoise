@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121f7113f56b3a347953b9cb575ff783, type: 3}
   m_Name: prototyp_air
   m_EditorClassIdentifier: 
-  name: air
+  tileName: air
   meshObj: {fileID: 0}
   rotation: 0
   weight: 0
@@ -22,3 +22,9 @@ MonoBehaviour:
   nZ: -1
   pY: -1
   nY: -1
+  pX_Neighbor: []
+  nX_Neighbor: []
+  pZ_Neighbor: []
+  nZ_Neighbor: []
+  pY_Neighbor: []
+  nY_Neighbor: []

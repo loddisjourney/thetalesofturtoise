@@ -76,4 +76,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entropy: 0
-  validTiles: []
+  defaultTile: {fileID: 11400000, guid: c6f6ab3ff2064904391b4c68613500a7, type: 2}
