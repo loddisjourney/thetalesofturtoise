@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseTexOverlay:
-        m_Texture: {fileID: 2800000, guid: d32f68b494aa32341be1def10781cb9d, type: 3}
+        m_Texture: {fileID: 2800000, guid: da15c21214049094aa77786246edea55, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
