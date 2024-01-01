@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121f7113f56b3a347953b9cb575ff783, type: 3}
+  m_Name: proto_269
+  m_EditorClassIdentifier: 
+  tileName: proto_269
+  meshObj: {fileID: 4021920813170511668, guid: a8a10c5e6e4d1b04d9646c33a7a7f3f7, type: 3}
+  rotation: 0
+  weight: 0
+  pX: 19s
+  nX: 19s
+  pZ: 19s
+  nZ: 19s
+  pY: v19_0
+  nY: -1
+  pX_Neighbor: []
+  nX_Neighbor: []
+  pZ_Neighbor: []
+  nZ_Neighbor: []
+  pY_Neighbor: []
+  nY_Neighbor: []

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 121f7113f56b3a347953b9cb575ff783, type: 3}
   m_Name: proto_119
   m_EditorClassIdentifier: 
-  tileName: proto_118
-  meshObj: {fileID: 1876885901618733478, guid: d0cdb2dad218a954ea7744e3c15e2d6a, type: 3}
+  tileName: proto_119
+  meshObj: {fileID: 428448988208539151, guid: 5c30deea9e1259e45acbe83f511fb71c, type: 3}
   rotation: 2
   weight: 0
   pX: 7s

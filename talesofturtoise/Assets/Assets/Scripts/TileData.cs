@@ -58,9 +58,10 @@ public class TileData : ScriptableObject
     * 22 Grass Edge step 3 
     * 23 grass ramp step 3 ----- not yet integrated
     * 24 grass top deep edge
-    * 25 mountain edge
+    * 25 mountain base
+    * 26 mountain edge
+    * v19_0 mountain vertical
     * 
-    * KONTROLLE
     */
 
 

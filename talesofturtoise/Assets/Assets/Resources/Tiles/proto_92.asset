@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: proto_92
   m_EditorClassIdentifier: 
   tileName: proto_92
-  meshObj: {fileID: 5417514649721065466, guid: 8144a949c4e1a3247ba692f2c9c76bef, type: 3}
+  meshObj: {fileID: 6715043405751868182, guid: de29eee8a45d718498f696eacb87518b, type: 3}
   rotation: 3
   weight: 0
   pX: 8s

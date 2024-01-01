@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 121f7113f56b3a347953b9cb575ff783, type: 3}
+  m_Name: proto_181
+  m_EditorClassIdentifier: 
+  tileName: proto_181
+  meshObj: {fileID: 7895189311663536032, guid: b2ede66e90ecab445b6072939b50f727, type: 3}
+  rotation: 0
+  weight: 0
+  pX: 7s
+  nX: 13s
+  pZ: 17
+  nZ: 17f
+  pY: -1
+  nY: -1
+  pX_Neighbor: []
+  nX_Neighbor: []
+  pZ_Neighbor: []
+  nZ_Neighbor: []
+  pY_Neighbor: []
+  nY_Neighbor: []
