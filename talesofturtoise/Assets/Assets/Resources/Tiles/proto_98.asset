@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 121f7113f56b3a347953b9cb575ff783, type: 3}
-  m_Name: prototyp_air
+  m_Name: proto_98
   m_EditorClassIdentifier: 
-  tileName: air
-  meshObj: {fileID: 0}
-  rotation: 0
+  tileName: proto_98
+  meshObj: {fileID: 5230063407261156418, guid: 794de51ef4039774a990af74e0f059a8, type: 3}
+  rotation: 1
   weight: 0
-  pX: -1
-  nX: -1
-  pZ: -1
-  nZ: -1
+  pX: 7s
+  nX: 0s
+  pZ: 10f
+  nZ: 10
   pY: -1
   nY: -1
   pX_Neighbor: []

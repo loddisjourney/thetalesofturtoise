@@ -24,6 +24,6 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void GenerateGrid()
     {
-        
+        //and generate floor -1 with water
     }
 }

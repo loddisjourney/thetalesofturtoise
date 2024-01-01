@@ -270,6 +270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_step_3_ramp_and_edge_r
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6f0f5951ed98f6c46a28e178dc1ddd66,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -348,6 +353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_3_ramp_and_edge_l
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e74343c888766944584546100c3bd3f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -668,7 +678,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 995497916db01fd4490758c35f722e57,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -822,6 +832,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass_floor_inner_corner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 418bd02fe1c9fbc418e9d93bc614b983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -900,6 +915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_step_3_edge
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d484a0c2551249d4cbd8003ddf399a71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1159,17 +1179,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
@@ -1195,6 +1215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_edge
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 418bd02fe1c9fbc418e9d93bc614b983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1281,6 +1306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_step_3_ramp_edge_r
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9879ef5fca1e4dc43bee7d441c248156,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1291,6 +1321,90 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9879ef5fca1e4dc43bee7d441c248156,
     type: 3}
   m_PrefabInstance: {fileID: 353500707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &359710237
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 678577017}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.19
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bdfaf15ef7b35b84d96e729c0af12dcd, type: 2}
+    - target: {fileID: 919132149155446097, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_Name
+      value: ground_step_1_ramp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7a5e9614dfe60445a978d944c23a035,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f7a5e9614dfe60445a978d944c23a035, type: 3}
+--- !u!4 &359710238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f7a5e9614dfe60445a978d944c23a035,
+    type: 3}
+  m_PrefabInstance: {fileID: 359710237}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &366469364
 PrefabInstance:
@@ -1363,7 +1477,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 922ae9ba5f4889d4a8d88f216d6e380b,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1555,6 +1669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_step_1_outer_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db68124e4f36fb446a63013f0b6c1fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1792,6 +1911,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_3_ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6202eb565bffb904997fb8cf7ed58fb4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2109,6 +2233,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_step_1_edge
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fa64ffdff5f1f9642a2f8fc198729a95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2322,6 +2451,7 @@ Transform:
   - {fileID: 1961636399}
   - {fileID: 819155283}
   - {fileID: 1288821510}
+  - {fileID: 359710238}
   - {fileID: 1294138544}
   - {fileID: 1155865562}
   - {fileID: 1019134340}
@@ -2371,8 +2501,93 @@ Transform:
   - {fileID: 917934694}
   - {fileID: 1857795768}
   - {fileID: 43263342}
+  - {fileID: 693275178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &693275177
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 678577017}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 80b348cd5b07d5b459c209b7f7a577b3, type: 2}
+    - target: {fileID: 919132149155446097, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_Name
+      value: ground_inner_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3ea69ef863e3aa54aa7c104480a08451,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3ea69ef863e3aa54aa7c104480a08451, type: 3}
+--- !u!4 &693275178 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ea69ef863e3aa54aa7c104480a08451,
+    type: 3}
+  m_PrefabInstance: {fileID: 693275177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &710477207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,7 +2659,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 3bf54469ac39bb64e83b67c3e30d2cea,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2522,7 +2737,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 364011786ee1ddb4890097ed43634a3c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2639,17 +2854,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
@@ -2664,7 +2879,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 270
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
@@ -2680,6 +2895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_outer_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 418bd02fe1c9fbc418e9d93bc614b983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2815,6 +3035,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass_floor_middle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 418bd02fe1c9fbc418e9d93bc614b983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2897,7 +3122,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2106f59c369dc20429522fe6f37d22cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2971,6 +3196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_3_ramp_edge_l
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e1f28f66a32c204ab3c2cb9ee2c441e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3130,6 +3360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass_floor_step_1_inner_corner
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db68124e4f36fb446a63013f0b6c1fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3287,6 +3522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_step_1_middle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db68124e4f36fb446a63013f0b6c1fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3683,6 +3923,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_step_1_base
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db68124e4f36fb446a63013f0b6c1fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4013,7 +4258,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6e5757b18124c4542a3672abdc1db9ff,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4093,6 +4338,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_1_outer_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae0181d36fa93ef488c61e8d43cc0ca1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4185,6 +4435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass_floor_step_3_middle
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d484a0c2551249d4cbd8003ddf399a71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4264,6 +4519,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_base
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 418bd02fe1c9fbc418e9d93bc614b983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4340,7 +4600,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 2e1d58f832dbaa64384c215db91626cd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4420,6 +4680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ground_edge
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b90174f4030c1bb46bb1f6735edfff59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4492,6 +4757,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_step_3_inner_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d484a0c2551249d4cbd8003ddf399a71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4575,7 +4845,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 0682f6ec874e0a74aac2ca01d0fe3116,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5044,6 +5314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_1_inner_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 201addaa7f22a8d4682dbf9b7cd5066e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5514,6 +5789,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: grass_floor_step_1_edge
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: db68124e4f36fb446a63013f0b6c1fd2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5592,6 +5872,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: grass_floor_step_3_inner_corner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d484a0c2551249d4cbd8003ddf399a71,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5716,6 +6001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ground_step_1_ramp_and_edge_l
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0cefeb174f979aa4396047c9b28337b8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
