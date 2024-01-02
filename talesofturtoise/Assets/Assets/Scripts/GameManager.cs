@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.CheckNeighbors:
                 //check all neighbors and their entropy update ans update the list with all possible tiles and without the setted tiles
+                wfc.CheckNeighbors();
                 break;
             default:
                 //incase their is no specific state set it to free game
