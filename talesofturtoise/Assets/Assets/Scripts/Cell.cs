@@ -20,7 +20,7 @@ public class Cell : MonoBehaviour
     private void Start()
     {
         //Sammle alle Valid Neighbors aus dem Ressource Ordner  und erstelle eine Liste daraus
-        validTiles = Resources.LoadAll<TileData>("Tiles");
+        validTiles = Resources.LoadAll<TileData>("Test");
         for (int i = 0; i < validTiles.Length; i++)
         {
             validNeighbors.Add(validTiles[i]);
