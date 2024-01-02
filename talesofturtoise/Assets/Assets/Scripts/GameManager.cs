@@ -8,10 +8,12 @@ public class GameManager : MonoBehaviour
      * Control the States of the Game and manage all functions
      */
 
+    public WaveFunctionCollapse wfc;
+
     public GameState gameState;
     void Start()
     {
-        
+        gameState = GameState.GenerateGrid;
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GenerateGrid:
                 //genrates the basic grid of the level, it may gets different size propertys
+                wfc.GenerateGrid();
                 break;
             case GameState.PlaceTile:
                 //if there is a free neighbor choose the lowest entropy or a random from the lowest entropy
