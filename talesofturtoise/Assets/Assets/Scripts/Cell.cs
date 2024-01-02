@@ -58,16 +58,27 @@ public class Cell : MonoBehaviour
             //GEt name of MeshObj of the Tile
             //string meshName = validTiles[randTile].meshObj.name;
             //Debug.Log("Name " + meshName);
-            //Get the rotation of the tile
+            //Get the rotation of the tile => muss nochmal verbessert werden indem die enums integer zugeweisen werden und dann statt verzweigung direkt in das instantiate (int)rotation aufgerufen wird; Problem: 200x neu rot setzen https://discussions.unity.com/t/use-an-integer-as-an-enum/63612/2
             int rot = 0;
             if(validTiles[randTile].rotation == TileData.Rotation.r0)
             {
-
+                rot = 0;
             }
-            
+            else if(validTiles[randTile].rotation == TileData.Rotation.r90)
+            {
+                rot = 90;
+            }
+            else if (validTiles[randTile].rotation == TileData.Rotation.r180)
+            {
+                rot = 180;
+            }
+            else if (validTiles[randTile].rotation == TileData.Rotation.r270)
+            {
+                rot = 270;
+            }
             //Place random Tile at this Cells Position
             GameObject chosenTile = validTiles[randTile].meshObj;
-            Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0,0,0));
+            Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0,rot,0));
         }
         else
         {

@@ -41,6 +41,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void GenerateGrid()
     {
+       
         //Generate Grid and create a List of all Grid Elements
         for (int y = 0; y < height; y++)
         {
@@ -70,12 +71,10 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
 
         //Test des Entropy und Zugriff eines Gridelement
-        i = gridList[12].gameObject.GetComponent<Cell>().GetTileData().Length;
-        Debug.Log("Grid " + gridList[12].gameObject.GetComponent<Cell>().name + " "+ i);
-        gridList[12].gameObject.GetComponent<Cell>().CalculateEntropy();
-        
-        
-        
+        //i = gridList[12].gameObject.GetComponent<Cell>().GetTileData().Length;
+       // Debug.Log("Grid " + gridList[12].gameObject.GetComponent<Cell>().name + " "+ i);
+        //gridList[12].gameObject.GetComponent<Cell>().CalculateEntropy();
+
         gameManager.gameState = GameManager.GameState.PlaceTile;
     }
 

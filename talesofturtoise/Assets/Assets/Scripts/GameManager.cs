@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
      */
 
     public WaveFunctionCollapse wfc;
+    public bool gridStarted;
 
     public GameState gameState;
     void Start()
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.GenerateGrid:
                 //genrates the basic grid of the level, it may gets different size propertys
-                wfc.GenerateGrid();
+                StartGeneration();
                 break;
             case GameState.PlaceTile:
                 //if there is a free neighbor choose the lowest entropy or a random from the lowest entropy
@@ -46,6 +47,16 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.FreeGame;
                 break;
         }
+    }
+
+    public void StartGeneration()
+    {
+        if(!gridStarted)
+        {
+            gridStarted = true;
+            wfc.GenerateGrid();
+        }
+        
     }
 
     public enum GameState
