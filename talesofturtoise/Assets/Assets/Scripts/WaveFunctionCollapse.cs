@@ -20,6 +20,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
     public List<GameObject> validGridCellList; //not collapsed Grid Cells
     public List<GameObject> lowestGridCellList;
+    public List<GameObject> collapsedGridCellList;
 
     [Header ("Ground Generation")]
     //This will be replaced by the worlds atmosphere
@@ -96,7 +97,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         if(gridList.Count == validGridCellList.Count)
         {
             //First Tile, vorerst setze Gras Tile
-            //Dies kann ersetzt werden durch Rahmen oder ähnliche vor dfinierte Level
+            //Dies kann ersetzt werden durch Rahmen oder ähnliche vor definierte Level, ggf. auch nur die inneren position oder eine konkrete position als start
 
             int randX = UnityEngine.Random.Range(0, length);
             int randZ = UnityEngine.Random.Range(0, width);
@@ -109,9 +110,16 @@ public class WaveFunctionCollapse : MonoBehaviour
                     firstGridCell = i;
                 }
             }
-
+            //Platziere Tile
             gridList[firstGridCell].gameObject.GetComponent<Cell>().FirstTile();
-
+            //Füge Cell zur Liste hinzu
+            collapsedGridCellList.Add(gridList[firstGridCell]);
+        }
+        else if(validGridCellList.Count == 0)
+        {
+            //Completed Placement
+            //setze level laden auf true aus dem loadings screen level
+            gameManager.gameState = GameManager.GameState.FreeGame;
         }
         else
         {
@@ -141,8 +149,8 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
             Debug.Log(lowestGridCellList.Count);
             //Choose a Random of the lowest Entropy Grid Cells
-            int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                                                                                      //Place a Random Tile add this GridCell
+            int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); 
+            //Place a Random Tile add this GridCell
             PlaceTile(randGridCell);
         }
     }
@@ -151,7 +159,65 @@ public class WaveFunctionCollapse : MonoBehaviour
     {
         //Choose a random Tile of the chosen Grid Cell and place it
         lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
-        
+        //füge Grid Cell zur Liste hinzu -> ggf von cells steuern
+        collapsedGridCellList.Add(lowestGridCellList[randIndex]);
         gameManager.gameState = GameManager.GameState.CheckNeighbors;
+    }
+
+    public void CheckNeighbors()
+    {
+        //Durchlaufe alle Cells
+        for(int i = 0; i < collapsedGridCellList.Count; i++)
+        {
+            //lösche tile vom nachbarn wenn ungleich
+            GameObject currentGridCell = collapsedGridCellList[i];
+            //Nachbar Pos X-----------------------------------------------------------------------------------------------
+            Vector3 neighborFrontPos = currentGridCell.transform.position += new Vector3(1, 0, 0);
+            //Find this neighbor
+            GameObject neighborPosX = null;
+            for (int xP = 0; xP < gridList.Count; xP++)
+            {
+                if (gridList[xP].transform.position == neighborFrontPos)
+                {
+                    neighborPosX = gridList[xP];
+                }
+            }
+            if(neighborPosX != null)
+            {
+                //Check Sockets zwischen allen von der aktuellen Cell und allen des NAchbar möglichen
+
+                for (int xA = 0; xA < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+                {
+                    //wenn sie gleich sind lasse sie, dann symetrisch
+                    if (currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile] == neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[xA])
+                    {
+                        //symmetrisch
+                        Debug.Log("S");
+                    }
+                    //flip f , kürze buchstaben  oder frage ab ob "{zahl}f" oder s oder nix ist oder "v{zahl}_{zahl}"
+                    //flip
+                    else
+                    {
+                        //Sie sind ungleich und damit raus
+                        neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                    }
+                }
+            }
+            
+            
+
+
+            //Nachbar Neg X
+            Vector3 neighborBackPos = currentGridCell.transform.position += new Vector3(-1, 0, 0);
+            //Nachbar Pos Z
+            Vector3 neighborRightPos = currentGridCell.transform.position += new Vector3(0, 0, 1);
+            //Nachbar Neg Z
+            Vector3 neighborLeftPos = currentGridCell.transform.position += new Vector3(0, 0, -1);
+            //Nachbar Pos Y
+            Vector3 neighborTopPos = currentGridCell.transform.position += new Vector3(0, 1, 0);
+            //Nachbar Neg Y 
+            Vector3 neighborBottomPos = currentGridCell.transform.position += new Vector3(0, -1, 0);
+
+        }
     }
 }

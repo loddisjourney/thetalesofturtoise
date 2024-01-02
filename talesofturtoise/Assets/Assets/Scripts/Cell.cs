@@ -11,13 +11,29 @@ public class Cell : MonoBehaviour
     private TileData[] validTiles; //[HideInInspector]
     public TileData defaultTile;
     public bool collapsed = false;
+    public bool newCheck;
+    public List<TileData> validNeighbors;
+    public int collapsedTile;
     /*
      * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
      */
     private void Start()
     {
+        //Sammle alle Valid Neighbors aus dem Ressource Ordner  und erstelle eine Liste daraus
         validTiles = Resources.LoadAll<TileData>("Tiles");
+        for (int i = 0; i < validTiles.Length; i++)
+        {
+            validNeighbors.Add(validTiles[i]);
+        }
+        Debug.Log("Neighhbor List "+ validNeighbors.Count);
         //validTiles = Resources.LoadAll<TileData>("Example");
+    }
+    private void Update()
+    {
+        if(collapsed&&newCheck)
+        {
+            CheckNewValidTiles();
+        }
     }
 
     public TileData[] GetTileData()
@@ -81,19 +97,23 @@ public class Cell : MonoBehaviour
             //Place random Tile at this Cells Position
             GameObject chosenTile = validTiles[randTile].meshObj;
             Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0,rot,0));
+            //Speichere den gewählten Index
+            collapsedTile = randTile;
         }
         else
         {
             //Place air Tile at this Cells Position
             Instantiate(defaultTile.meshObj, this.transform.position, Quaternion.identity);
         }
-
+        
         //Set it to collapsed
         collapsed = true;
     }
 
     public void FirstTile()
     {
+        //Place first tile with specific gras ground
+        
         int grasTile = 0;
         for(int i = 0; i < validTiles.Length; i++)
         {
@@ -122,7 +142,22 @@ public class Cell : MonoBehaviour
         //Place random Tile at this Cells Position
         GameObject chosenTile = validTiles[grasTile].meshObj;
         Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0, rot, 0));
+        //Speichere den gewählten Index
+        collapsedTile = grasTile;
         collapsed = true;
+        
+    }
+
+    public void CheckNewValidTiles()
+    {
+        //only if collapsed it should to this
+        //check ob das gewählte tile an den nachbarn das gleiche hat wenn nicht streiche das mesh name aus dem array
+        if(newCheck)
+        {
+            newCheck = false;
+
+
+        }
     }
 
 }
