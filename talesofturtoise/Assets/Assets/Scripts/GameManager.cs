@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
      */
 
     public WaveFunctionCollapse wfc;
-    public bool gridStarted;
+    private bool gridStarted;
+    private bool entropyStarted;
+    private bool checkNeighborStarted;
 
     public GameState gameState;
     void Start()
@@ -37,11 +39,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.PlaceTile:
                 //if there is a free neighbor choose the lowest entropy or a random from the lowest entropy
-                wfc.FindLowestEntropy();
+                entropyStarted = false;
+                StartFindLowestEntropy();
                 break;
             case GameState.CheckNeighbors:
                 //check all neighbors and their entropy update ans update the list with all possible tiles and without the setted tiles
-                wfc.CheckNeighbors();
+                checkNeighborStarted = false;
+                StartCheckNeighbors();
                 break;
             default:
                 //incase their is no specific state set it to free game
@@ -58,6 +62,24 @@ public class GameManager : MonoBehaviour
             wfc.GenerateGrid();
         }
         
+    }
+
+    public void StartFindLowestEntropy()
+    {
+        if (!entropyStarted)
+        {
+            entropyStarted = true;
+            wfc.FindLowestEntropy();
+        }
+    }
+
+    public void StartCheckNeighbors()
+    {
+        if (!checkNeighborStarted)
+        {
+            checkNeighborStarted = true;
+            wfc.CheckNeighbors();
+        }
     }
 
     public enum GameState

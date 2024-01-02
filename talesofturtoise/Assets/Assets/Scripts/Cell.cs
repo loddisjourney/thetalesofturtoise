@@ -120,6 +120,7 @@ public class Cell : MonoBehaviour
             if(validTiles[i].meshObj.name =="ground_base")
             {
                 grasTile = i;
+                collapsedTile = i;
             }
         }
         int rot = 0;
@@ -143,9 +144,8 @@ public class Cell : MonoBehaviour
         GameObject chosenTile = validTiles[grasTile].meshObj;
         Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0, rot, 0));
         //Speichere den gewählten Index
-        collapsedTile = grasTile;
-        collapsed = true;
         
+        collapsed = true;     
     }
 
     public void CheckNewValidTiles()
@@ -155,8 +155,6 @@ public class Cell : MonoBehaviour
         if(newCheck)
         {
             newCheck = false;
-
-
         }
     }
 

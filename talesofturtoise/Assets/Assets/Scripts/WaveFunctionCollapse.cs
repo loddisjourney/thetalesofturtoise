@@ -101,7 +101,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
             //First Tile, vorerst setze Gras Tile
             //Dies kann ersetzt werden durch Rahmen oder ähnliche vor definierte Level, ggf. auch nur die inneren position oder eine konkrete position als start
-
+            // problem dass es grid element verschiebt
             int randX = UnityEngine.Random.Range(0, length);
             int randZ = UnityEngine.Random.Range(0, width);
             int firstGridCell = 0;
@@ -184,7 +184,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             PosXNeighbor(currentSocket, neighborFrontPos);
             
             /*...*/
-
+            /*
             //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?           
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
             Vector3 neighborBackPos = currentGridCell.transform.position += new Vector3(-1, 0, 0);
@@ -214,7 +214,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             Vector3 neighborBottomPos = currentGridCell.transform.position += new Vector3(0, -1, 0);
 
             NegYNeighbor(currentSocket, neighborBottomPos);
-            
+            */
 
             //placetile!!!!!!!!!!!!!!!!!!!!!!!!!!
             gameManager.gameState = GameManager.GameState.FreeGame;
