@@ -58,9 +58,16 @@ public class Cell : MonoBehaviour
             //GEt name of MeshObj of the Tile
             //string meshName = validTiles[randTile].meshObj.name;
             //Debug.Log("Name " + meshName);
+            //Get the rotation of the tile
+            int rot = 0;
+            if(validTiles[randTile].rotation == TileData.Rotation.r0)
+            {
+
+            }
+            
             //Place random Tile at this Cells Position
-             GameObject chosenTile = validTiles[randTile].meshObj;
-            Instantiate(chosenTile, this.transform.position, Quaternion.identity);
+            GameObject chosenTile = validTiles[randTile].meshObj;
+            Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0,0,0));
         }
         else
         {
