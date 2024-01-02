@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.PlaceTile:
                 //if there is a free neighbor choose the lowest entropy or a random from the lowest entropy
+                wfc.FindLowestEntropy();
                 break;
             case GameState.CheckNeighbors:
                 //check all neighbors and their entropy update ans update the list with all possible tiles and without the setted tiles

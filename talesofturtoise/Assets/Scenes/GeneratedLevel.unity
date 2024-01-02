@@ -209,13 +209,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.8882353, y: 2.6882353, z: -26.458824}
+  m_LocalRotation: {x: 0.08335657, y: -0.7021764, z: 0.08335657, w: 0.7021764}
+  m_LocalPosition: {x: 10.51, y: 4.78, z: -0.06}
   m_LocalScale: {x: 2.9411764, y: 2.9411764, z: 2.9411764}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1918267034}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 13.54, y: -90, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918267030}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -605,7 +605,7 @@ Transform:
   m_GameObject: {fileID: 1918267030}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.982, y: 0.086, z: -1.004}
+  m_LocalPosition: {x: 5.49, y: 0.086, z: 4.53}
   m_LocalScale: {x: 0.34, y: 0.34, z: 0.34}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -682,6 +682,8 @@ MonoBehaviour:
   gridCell: {fileID: 1895469468311832737, guid: 5382a5fd95f622e4d893266804916568,
     type: 3}
   gridList: []
+  validGridCellList: []
+  lowestGridCellList: []
   waterTile: {fileID: 1522215314971773744, guid: 2710d2d2cccf22d4d830e944572aec87,
     type: 3}
   waterParent: {fileID: 1507332538}

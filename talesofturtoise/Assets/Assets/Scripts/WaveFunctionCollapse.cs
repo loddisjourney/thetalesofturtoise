@@ -18,8 +18,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     [SerializeField] GameObject gridCell;
     private GameObject currentCell;
     public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
-    List<GameObject> validGridCellList; //not collapsed Grid Cells
-    List<GameObject> lowestGridCellList;
+    public List<GameObject> validGridCellList; //not collapsed Grid Cells
+    public List<GameObject> lowestGridCellList;
 
     [Header ("Ground Generation")]
     //This will be replaced by the worlds atmosphere
@@ -75,6 +75,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         gridList[12].gameObject.GetComponent<Cell>().CalculateEntropy();
         
         
+        
         gameManager.gameState = GameManager.GameState.PlaceTile;
     }
 
@@ -82,15 +83,17 @@ public class WaveFunctionCollapse : MonoBehaviour
     {
         //Go through all GridCells which are not collapsed already and Find the lowest Entropy.. safe it in a list/array
         //Create List of not collapsed Grid Cells
-        validGridCellList.Clear();
+        if(validGridCellList != null) validGridCellList.Clear();
         for (int g = 0; g < gridList.Count; g++)
         {
-            if(gridList[g].gameObject.GetComponent<Cell>().collapsed != true)
+            if(gridList[g].gameObject.GetComponent<Cell>().collapsed == false)
             {
                 validGridCellList.Add(gridList[g]);
             }
         }
-
+        Debug.Log("Count " +validGridCellList.Count);
+        if(validGridCellList.Count != 0)
+        { 
         //First get the Lowest Entropy  of this new List
         float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
         for (int g = 0; g < validGridCellList.Count; g++)
@@ -103,9 +106,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 lowestEntropy = currentEntropy;
             }           
         }
+        Debug.Log("Lowest Entropy "+lowestEntropy);
 
         //Then generate List of all lowest Entropy
-        lowestGridCellList.Clear();
+        if (lowestGridCellList != null) lowestGridCellList.Clear();
         for (int g = 0; g < validGridCellList.Count; g++)
         { 
             if(lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
@@ -113,16 +117,19 @@ public class WaveFunctionCollapse : MonoBehaviour
                 lowestGridCellList.Add(validGridCellList[g]);
             }
         }
-
+        Debug.Log(lowestGridCellList.Count);
         //Choose a Random of the lowest Entropy Grid Cells
-        int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count);
+        int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         //Place a Random Tile add this GridCell
         PlaceTile(randGridCell);
         }
+    }
 
     public void PlaceTile(int randIndex)
     {
         //Choose a random Tile of the chosen Grid Cell and place it
         lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
+        
+        gameManager.gameState = GameManager.GameState.CheckNeighbors;
     }
 }

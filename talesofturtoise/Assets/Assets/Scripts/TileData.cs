@@ -12,7 +12,7 @@ public class TileData : ScriptableObject
      */
 
     [SerializeField] string tileName; //prototype
-    [SerializeField] GameObject meshObj;
+    public GameObject meshObj;
     public Rotation rotation; //orientation of the socket
     public int weight; //5,4,3,2,1
 
