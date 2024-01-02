@@ -91,36 +91,59 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
         }
         Debug.Log("Count " +validGridCellList.Count);
-        if(validGridCellList.Count != 0)
-        { 
-        //First get the Lowest Entropy  of this new List
-        float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
-        for (int g = 0; g < validGridCellList.Count; g++)
-        {
-           float currentEntropy;
-           currentEntropy = validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy();
-           
-            if(currentEntropy < lowestEntropy)
-            {
-                lowestEntropy = currentEntropy;
-            }           
-        }
-        Debug.Log("Lowest Entropy "+lowestEntropy);
 
-        //Then generate List of all lowest Entropy
-        if (lowestGridCellList != null) lowestGridCellList.Clear();
-        for (int g = 0; g < validGridCellList.Count; g++)
-        { 
-            if(lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
+        //check if its the first placment
+        if(gridList.Count == validGridCellList.Count)
+        {
+            //First Tile, vorerst setze Gras Tile
+            //Dies kann ersetzt werden durch Rahmen oder ähnliche vor dfinierte Level
+
+            int randX = UnityEngine.Random.Range(0, length);
+            int randZ = UnityEngine.Random.Range(0, width);
+            int firstGridCell = 0;
+            Vector3 firstPos = new Vector3 (randX, 0, randZ);
+            for(int i = 0; i < gridList.Count; i++)
             {
-                lowestGridCellList.Add(validGridCellList[g]);
+                if(firstPos == gridList[i].transform.position)
+                { 
+                    firstGridCell = i;
+                }
             }
+
+            gridList[firstGridCell].gameObject.GetComponent<Cell>().FirstTile();
+
         }
-        Debug.Log(lowestGridCellList.Count);
-        //Choose a Random of the lowest Entropy Grid Cells
-        int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //Place a Random Tile add this GridCell
-        PlaceTile(randGridCell);
+        else
+        {
+            //Continue Placement
+            //First get the Lowest Entropy  of this new List
+            float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
+            for (int g = 0; g < validGridCellList.Count; g++)
+            {
+                float currentEntropy;
+                currentEntropy = validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy();
+
+                if (currentEntropy < lowestEntropy)
+                {
+                    lowestEntropy = currentEntropy;
+                }
+            }
+            Debug.Log("Lowest Entropy " + lowestEntropy);
+
+            //Then generate List of all lowest Entropy
+            if (lowestGridCellList != null) lowestGridCellList.Clear();
+            for (int g = 0; g < validGridCellList.Count; g++)
+            {
+                if (lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
+                {
+                    lowestGridCellList.Add(validGridCellList[g]);
+                }
+            }
+            Debug.Log(lowestGridCellList.Count);
+            //Choose a Random of the lowest Entropy Grid Cells
+            int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                                                                      //Place a Random Tile add this GridCell
+            PlaceTile(randGridCell);
         }
     }
 
