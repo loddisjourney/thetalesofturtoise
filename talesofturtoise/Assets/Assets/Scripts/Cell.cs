@@ -1,19 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Cell : MonoBehaviour
 {
     public float entropy;
     private TileData[] validTiles; //[HideInInspector]
     public TileData defaultTile;
+    public bool collapsed;
     /*
      * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
      */
     private void Start()
     {
-        //validTiles = Resources.LoadAll<TileData>("Tiles");
-        validTiles = Resources.LoadAll<TileData>("Example");
+        validTiles = Resources.LoadAll<TileData>("Tiles");
+        //validTiles = Resources.LoadAll<TileData>("Example");
     }
 
     public TileData[] GetTileData()
@@ -44,6 +47,25 @@ public class Cell : MonoBehaviour
 
         Debug.Log("Result "+ -entropy);   
         return -entropy; 
+    }
+
+    public void ChooseRandomTile()
+    {
+        //Choose a random Tile if its not empty
+        if(validTiles.Length == 0)
+        {
+            int randTile = UnityEngine.Random.Range(0, validTiles.Length);
+            //Place random Tile at this Cells Position
+            //Instantiate(validTiles[randTile].pY, this.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            //Place air Tile at this Cells Position
+            Instantiate(defaultTile, this.transform.position, Quaternion.identity);
+        }
+
+        //Set it to collapsed
+        collapsed = true;
     }
 
 }

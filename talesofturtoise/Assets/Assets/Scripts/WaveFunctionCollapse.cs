@@ -18,6 +18,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     [SerializeField] GameObject gridCell;
     private GameObject currentCell;
     public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
+    List<GameObject> validGridCellList; //not collapsed Grid Cells
+    List<GameObject> lowestGridCellList;
 
     [Header ("Ground Generation")]
     //This will be replaced by the worlds atmosphere
@@ -78,20 +80,49 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void FindLowestEntropy()
     {
-        //Go through all GridCells and Find the lowest Entropy.. safe it in a list/array
-
-        for (int y = 0; y < height; y++)
+        //Go through all GridCells which are not collapsed already and Find the lowest Entropy.. safe it in a list/array
+        //Create List of not collapsed Grid Cells
+        validGridCellList.Clear();
+        for (int g = 0; g < gridList.Count; g++)
         {
-            for (int x = 0; x < length; x++)
+            if(gridList[g].gameObject.GetComponent<Cell>().collapsed != true)
             {
-                for (int z = 0; z < width; z++)
-                {
-                }
+                validGridCellList.Add(gridList[g]);
             }
         }
 
+        //First get the Lowest Entropy  of this new List
+        float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
+        for (int g = 0; g < validGridCellList.Count; g++)
+        {
+           float currentEntropy;
+           currentEntropy = validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy();
+           
+            if(currentEntropy < lowestEntropy)
+            {
+                lowestEntropy = currentEntropy;
+            }           
+        }
 
-        //check the count of the list with the loweste entropy delete those which a higher then this entropy
-        // choose a rasndom cell of the lowest enntropy
+        //Then generate List of all lowest Entropy
+        lowestGridCellList.Clear();
+        for (int g = 0; g < validGridCellList.Count; g++)
+        { 
+            if(lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
+            {
+                lowestGridCellList.Add(validGridCellList[g]);
+            }
+        }
+
+        //Choose a Random of the lowest Entropy Grid Cells
+        int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count);
+        //Place a Random Tile add this GridCell
+        PlaceTile(randGridCell);
+        }
+
+    public void PlaceTile(int randIndex)
+    {
+        //Choose a random Tile of the chosen Grid Cell and place it
+        lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
     }
 }

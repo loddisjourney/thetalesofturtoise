@@ -15,7 +15,7 @@ MonoBehaviour:
   tileName: 
   meshObj: {fileID: 0}
   rotation: 0
-  weight: 9
+  weight: 5
   pX: 
   nX: 
   pZ: 
