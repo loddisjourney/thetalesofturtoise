@@ -144,7 +144,7 @@ public class Cell : MonoBehaviour
         GameObject chosenTile = validTiles[grasTile].meshObj;
         Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0, rot, 0));
         //Speichere den gewählten Index
-        
+
         collapsed = true;     
     }
 

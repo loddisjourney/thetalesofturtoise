@@ -676,7 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 846340949}
   width: 10
-  height: 2
+  height: 1
   length: 10
   cell: {fileID: 4710302509214891352, guid: 5382a5fd95f622e4d893266804916568, type: 3}
   gridCell: {fileID: 1895469468311832737, guid: 5382a5fd95f622e4d893266804916568,
@@ -684,6 +684,7 @@ MonoBehaviour:
   gridList: []
   validGridCellList: []
   lowestGridCellList: []
+  collapsedGridCellList: []
   waterTile: {fileID: 1522215314971773744, guid: 2710d2d2cccf22d4d830e944572aec87,
     type: 3}
   waterParent: {fileID: 1507332538}

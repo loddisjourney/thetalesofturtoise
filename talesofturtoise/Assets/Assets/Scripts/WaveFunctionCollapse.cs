@@ -176,48 +176,48 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
             GameObject currentGridCell = collapsedGridCellList[i];
             string currentSocket;
-
+            //vielleicht hat er wegen der rotation probleme -> test die rotation zu setzen
             //Nachbar Pos X----------------------------------------------------------------------------------------------- Pos X == Neg X?
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
-            Vector3 neighborFrontPos = currentGridCell.transform.position += new Vector3(1, 0, 0);
+            Vector3 neighborFrontPos = currentGridCell.transform.position + new Vector3(1, 0, 0);
 
             PosXNeighbor(currentSocket, neighborFrontPos);
             
             /*...*/
-            /*
+            
             //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?           
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
-            Vector3 neighborBackPos = currentGridCell.transform.position += new Vector3(-1, 0, 0);
+            Vector3 neighborBackPos = currentGridCell.transform.position + new Vector3(-1, 0, 0);
 
             NegXNeighbor(currentSocket, neighborBackPos);
 
             //Nachbar Pos Z ----------------------------------------------------------------------------------------------- Pos Z == Neg Z?
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pZ;
-            Vector3 neighborRightPos = currentGridCell.transform.position += new Vector3(0, 0, 1);
+            Vector3 neighborRightPos = currentGridCell.transform.position + new Vector3(0, 0, 1);
 
             PosZNeighbor(currentSocket, neighborRightPos);
 
             //Nachbar Neg Z ----------------------------------------------------------------------------------------------- Neg Z == Pos Z?
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nZ;
-            Vector3 neighborLeftPos = currentGridCell.transform.position += new Vector3(0, 0, -1);
+            Vector3 neighborLeftPos = currentGridCell.transform.position + new Vector3(0, 0, -1);
 
             NegZNeighbor(currentSocket, neighborLeftPos);
 
             //Nachbar Pos Y ----------------------------------------------------------------------------------------------- Pos Y == Neg Y?
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pY;
-            Vector3 neighborTopPos = currentGridCell.transform.position += new Vector3(0, 1, 0);
+            Vector3 neighborTopPos = currentGridCell.transform.position + new Vector3(0, 1, 0);
 
             PosYNeighbor(currentSocket, neighborTopPos);
 
             //Nachbar Neg Y  ----------------------------------------------------------------------------------------------- Neg Y == Pos Y?
             currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nY;
-            Vector3 neighborBottomPos = currentGridCell.transform.position += new Vector3(0, -1, 0);
+            Vector3 neighborBottomPos = currentGridCell.transform.position + new Vector3(0, -1, 0);
 
             NegYNeighbor(currentSocket, neighborBottomPos);
-            */
+            
 
             //placetile!!!!!!!!!!!!!!!!!!!!!!!!!!
-            gameManager.gameState = GameManager.GameState.FreeGame;
+            gameManager.gameState = GameManager.GameState.PlaceTile;
         }
     }
 
