@@ -49,25 +49,26 @@ public class Cell : MonoBehaviour
         entropy = 0;
         //Summe der gesammten Weights
         float totalWeight = 0;
-        for(int i = 0; i < validTiles.Length; i++)
+        for(int i = 0; i < validNeighbors.Count; i++)
         {
-            totalWeight += validTiles[i].weight;
+            totalWeight += validNeighbors[i].weight;
         }
 
         //Die Entropy ist die Summe der Wahrscheinlichkeit der möglichen Tiles multipliziert mit dem Logarithmus der ahrscheinlichkeit des Tiles, das Ergebnis wird negiert
         //Die Wahrscheinlihckeit ist das Weight des aktuellen möglichen Tiles durch die addierte gesammten Weightrs alller möglichen Weights
-        for (int i = 0; i < validTiles.Length; i++)
+        for (int i = 0; i < validNeighbors.Count; i++)
         {
-            float wahrscheinlichkeit = validTiles[i].weight / totalWeight;
+            float wahrscheinlichkeit = validNeighbors[i].weight / totalWeight;
             entropy += wahrscheinlichkeit * Mathf.Log(wahrscheinlichkeit, 2);
         }
 
-        Debug.Log("Result of Entropy "+ -entropy);   
+        Debug.Log("Result of Entropy "+ -entropy + "Count of valid neighbors" + validNeighbors.Count);   
         return -entropy; 
     }
 
     public void ChooseRandomTile()
     {
+        Debug.Log("5. This Tile is called " + this.gameObject.name);
         //Choose a random Tile if its not empty
         if(validTiles.Length != 0)
         {
@@ -96,7 +97,11 @@ public class Cell : MonoBehaviour
             }
             //Place random Tile at this Cells Position
             GameObject chosenTile = validTiles[randTile].meshObj;
-            Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0,rot,0));
+            GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
+            GameObject child = parentTile.transform.GetChild(0).gameObject;
+            child.transform.rotation = Quaternion.Euler(0, rot, 0);
+            //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0,90,0); 
+            //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
             //Speichere den gewählten Index
             collapsedTile = randTile;
         }
@@ -142,7 +147,11 @@ public class Cell : MonoBehaviour
         }
         //Place random Tile at this Cells Position
         GameObject chosenTile = validTiles[grasTile].meshObj;
-        Instantiate(chosenTile, this.transform.position, Quaternion.Euler(0, rot, 0));
+        GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
+        GameObject child = parentTile.transform.GetChild(0).gameObject;
+        child.transform.rotation = Quaternion.Euler(0, rot, 0);
+        //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0, 90, 0);
+        //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
         //Speichere den gewählten Index
 
         collapsed = true;     

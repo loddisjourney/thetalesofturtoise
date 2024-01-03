@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 //incase their is no specific state set it to free game
-                gameState = GameState.FreeGame;
+                gameState = GameState.PlaceTile;
                 break;
         }
     }

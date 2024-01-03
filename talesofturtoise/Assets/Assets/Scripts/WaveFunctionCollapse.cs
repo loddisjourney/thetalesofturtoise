@@ -141,7 +141,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     lowestEntropy = currentEntropy;
                 }
             }
-            Debug.Log("Lowest Entropy " + lowestEntropy);
+            Debug.Log("1. Lowest Entropy " + lowestEntropy);
 
             //Then generate List of all lowest Entropy
             if (lowestGridCellList != null) lowestGridCellList.Clear();
@@ -150,11 +150,13 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
                 {
                     lowestGridCellList.Add(validGridCellList[g]);
+                    Debug.Log(" 2. Mögliche Cell " + validGridCellList[g].gameObject.name);
                 }
             }
-            Debug.Log(lowestGridCellList.Count);
+            Debug.Log("3. Auswahlanzahl " + lowestGridCellList.Count);
             //Choose a Random of the lowest Entropy Grid Cells
             int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); 
+            Debug.Log("4. Indexwahl "+ randGridCell + " ist " + lowestGridCellList[randGridCell].name);
             //Place a Random Tile add this GridCell
             PlaceTile(randGridCell);
         }
@@ -178,43 +180,100 @@ public class WaveFunctionCollapse : MonoBehaviour
             string currentSocket;
             //vielleicht hat er wegen der rotation probleme -> test die rotation zu setzen
             //Nachbar Pos X----------------------------------------------------------------------------------------------- Pos X == Neg X?
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
-            Vector3 neighborFrontPos = currentGridCell.transform.position + new Vector3(1, 0, 0);
+            try { 
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
+                Vector3 neighborFrontPos = currentGridCell.transform.position + new Vector3(1, 0, 0);
+                //Debug.Log(currentGridCell.transform.position + " " + neighborFrontPos);
 
-            PosXNeighbor(currentSocket, neighborFrontPos);
+                PosXNeighbor(currentSocket, neighborFrontPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
+            
             
             /*...*/
             
-            //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?           
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
-            Vector3 neighborBackPos = currentGridCell.transform.position + new Vector3(-1, 0, 0);
+            //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?
+            try 
+            {
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
+                Vector3 neighborBackPos = currentGridCell.transform.position + new Vector3(-1, 0, 0);
+                //Debug.Log(currentGridCell.transform.position + " " + neighborBackPos);
 
-            NegXNeighbor(currentSocket, neighborBackPos);
+
+                NegXNeighbor(currentSocket, neighborBackPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
 
             //Nachbar Pos Z ----------------------------------------------------------------------------------------------- Pos Z == Neg Z?
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pZ;
-            Vector3 neighborRightPos = currentGridCell.transform.position + new Vector3(0, 0, 1);
+            try
+            {
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pZ;
+                Vector3 neighborRightPos = currentGridCell.transform.position + new Vector3(0, 0, 1);
+                //Debug.Log(currentGridCell.transform.position + " " + neighborRightPos);
 
-            PosZNeighbor(currentSocket, neighborRightPos);
+                PosZNeighbor(currentSocket, neighborRightPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
+
 
             //Nachbar Neg Z ----------------------------------------------------------------------------------------------- Neg Z == Pos Z?
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nZ;
-            Vector3 neighborLeftPos = currentGridCell.transform.position + new Vector3(0, 0, -1);
+            try
+            {
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nZ;
+                Vector3 neighborLeftPos = currentGridCell.transform.position + new Vector3(0, 0, -1);
+                //Debug.Log(currentGridCell.transform.position + " " + neighborLeftPos);
 
-            NegZNeighbor(currentSocket, neighborLeftPos);
+                NegZNeighbor(currentSocket, neighborLeftPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
+
 
             //Nachbar Pos Y ----------------------------------------------------------------------------------------------- Pos Y == Neg Y?
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pY;
-            Vector3 neighborTopPos = currentGridCell.transform.position + new Vector3(0, 1, 0);
+            try
+            {
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pY;
+                Vector3 neighborTopPos = currentGridCell.transform.position + new Vector3(0, 1, 0);
 
-            PosYNeighbor(currentSocket, neighborTopPos);
+                PosYNeighbor(currentSocket, neighborTopPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
+
 
             //Nachbar Neg Y  ----------------------------------------------------------------------------------------------- Neg Y == Pos Y?
-            currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nY;
-            Vector3 neighborBottomPos = currentGridCell.transform.position + new Vector3(0, -1, 0);
+            try
+            {
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().validNeighbors[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nY;
+                Vector3 neighborBottomPos = currentGridCell.transform.position + new Vector3(0, -1, 0);
 
-            NegYNeighbor(currentSocket, neighborBottomPos);
-            
+                NegYNeighbor(currentSocket, neighborBottomPos);
+            }
+            catch
+            {
+                //kein nachbar
+                Debug.Log("kein nachbar");
+            }
+
+
 
             //placetile!!!!!!!!!!!!!!!!!!!!!!!!!!
             gameManager.gameState = GameManager.GameState.PlaceTile;
@@ -240,7 +299,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             {
                 Debug.Log("Current " + currentSocket);
 
-                string neighborSocket = neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[xA].nX;
+                string neighborSocket = neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[xA].nX; //Tile Data Object aus der Liste und von dieser Tile Data der Negativ X Nachbar als gegen Socket zum Current von Positiv
                 Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
@@ -282,7 +341,9 @@ public class WaveFunctionCollapse : MonoBehaviour
                 {
                     //Sie sind ungleich und damit raus
                     Debug.Log("Delete");
+                    Debug.Log("Entropy davor" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
                     neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                    Debug.Log("Entropy danach" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
                 }
 
             }
