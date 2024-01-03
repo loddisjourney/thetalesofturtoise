@@ -11,6 +11,7 @@ public class Cell : MonoBehaviour
     private TileData[] validTiles; //[HideInInspector]
     public TileData defaultTile;
     public bool collapsed = false;
+    public bool isNeighbor = false;
     public bool newCheck;
     public List<TileData> validNeighbors;
     public int collapsedTile;
@@ -25,7 +26,7 @@ public class Cell : MonoBehaviour
         {
             validNeighbors.Add(validTiles[i]);
         }
-        Debug.Log("Neighhbor List "+ validNeighbors.Count);
+        //Debug.Log("Neighhbor List "+ validNeighbors.Count);
         //validTiles = Resources.LoadAll<TileData>("Example");
     }
     private void Update()
@@ -113,6 +114,7 @@ public class Cell : MonoBehaviour
         
         //Set it to collapsed
         collapsed = true;
+        
     }
 
     public void FirstTile()
@@ -154,7 +156,8 @@ public class Cell : MonoBehaviour
         //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
         //Speichere den gewählten Index
 
-        collapsed = true;     
+        collapsed = true;
+       
     }
 
     public void CheckNewValidTiles()

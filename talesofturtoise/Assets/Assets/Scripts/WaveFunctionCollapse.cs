@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveFunctionCollapse : MonoBehaviour
@@ -22,7 +23,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     private GameObject currentCell;
     public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
     public List<GameObject> validGridCellList; //not collapsed Grid Cells
-    
+    public List<GameObject> neighborsList;
     public List<GameObject> lowestGridCellList;
     public List<GameObject> collapsedGridCellList;
 
@@ -125,10 +126,20 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
             //Completed Placement
             //setze level laden auf true aus dem loadings screen level
+            Debug.Log("done");
             gameManager.gameState = GameManager.GameState.FreeGame;
         }
         else
         {
+            if (validGridCellList != null) validGridCellList.Clear();
+            for (int g = 0; g < gridList.Count; g++)
+            {
+                if (gridList[g].gameObject.GetComponent<Cell>().collapsed == false && gridList[g].gameObject.GetComponent<Cell>().isNeighbor == true)
+                {
+                    validGridCellList.Add(gridList[g]);
+                }
+            }
+            Debug.Log("Mögliche NAchbarn -------------------------" + validGridCellList.Count);
             //Continue Placement
             //First get the Lowest Entropy  of this new List
             float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
@@ -156,11 +167,13 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
             Debug.Log("3. Auswahlanzahl " + lowestGridCellList.Count);
             //Choose a Random of the lowest Entropy Grid Cells
-            int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count); 
-            Debug.Log("4. Indexwahl "+ randGridCell + " ist " + lowestGridCellList[randGridCell].name);
+            int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count);
+            Debug.Log("4. Indexwahl " + randGridCell + " ist " + lowestGridCellList[randGridCell].name);
+            lowestGridCellList[randGridCell].gameObject.GetComponent<Cell>().isNeighbor = false;
             //Place a Random Tile add this GridCell
             PlaceTile(randGridCell);
         }
+
     }
 
     public void PlaceTile(int randIndex)
@@ -294,6 +307,12 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborPosX != null)
         {
+            //füge nachbar zur liste zu
+            if(neighborPosX.gameObject.GetComponent<Cell>().collapsed == false && neighborPosX.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborPosX.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
+            
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
@@ -364,6 +383,11 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborNegX != null)
         {
+            //füge nachbar zur liste zu
+            if (neighborNegX.gameObject.GetComponent<Cell>().collapsed == false && neighborNegX.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborNegX.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
@@ -432,6 +456,12 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborPosZ != null)
         {
+            //füge nachbar zur liste zu
+            if (neighborPosZ.gameObject.GetComponent<Cell>().collapsed == false && neighborPosZ.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborPosZ.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
+
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
@@ -500,6 +530,12 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborNegZ != null)
         {
+            //füge nachbar zur liste zu
+            if (neighborNegZ.gameObject.GetComponent<Cell>().collapsed == false && neighborNegZ.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborNegZ.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
+
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
@@ -568,6 +604,13 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborPosY != null)
         {
+            //füge nachbar zur liste zu
+            if (neighborPosY.gameObject.GetComponent<Cell>().collapsed == false && neighborPosY.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborPosY.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
+
+
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
@@ -636,6 +679,13 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         if (neighborNegY != null)
         {
+            //füge nachbar zur liste zu
+            if (neighborNegY.gameObject.GetComponent<Cell>().collapsed == false && neighborNegY.gameObject.GetComponent<Cell>().isNeighbor == false)
+            {
+                neighborNegY.gameObject.GetComponent<Cell>().isNeighbor = true;
+            }
+
+
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
