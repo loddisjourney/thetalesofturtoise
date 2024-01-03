@@ -22,6 +22,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     private GameObject currentCell;
     public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
     public List<GameObject> validGridCellList; //not collapsed Grid Cells
+    
     public List<GameObject> lowestGridCellList;
     public List<GameObject> collapsedGridCellList;
 

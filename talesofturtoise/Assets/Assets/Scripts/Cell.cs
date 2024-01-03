@@ -20,7 +20,7 @@ public class Cell : MonoBehaviour
     private void Start()
     {
         //Sammle alle Valid Neighbors aus dem Ressource Ordner  und erstelle eine Liste daraus
-        validTiles = Resources.LoadAll<TileData>("Test");
+        validTiles = Resources.LoadAll<TileData>("Test2");
         for (int i = 0; i < validTiles.Length; i++)
         {
             validNeighbors.Add(validTiles[i]);
@@ -98,8 +98,8 @@ public class Cell : MonoBehaviour
             //Place random Tile at this Cells Position
             GameObject chosenTile = validTiles[randTile].meshObj;
             GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
-            GameObject child = parentTile.transform.GetChild(0).gameObject;
-            child.transform.rotation = Quaternion.Euler(0, rot, 0);
+            //GameObject child = parentTile.transform.GetChild(0).gameObject;
+            //child.transform.rotation = Quaternion.Euler(0, rot, 0);
             //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0,90,0); 
             //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
             //Speichere den gewählten Index
@@ -148,8 +148,8 @@ public class Cell : MonoBehaviour
         //Place random Tile at this Cells Position
         GameObject chosenTile = validTiles[grasTile].meshObj;
         GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
-        GameObject child = parentTile.transform.GetChild(0).gameObject;
-        child.transform.rotation = Quaternion.Euler(0, rot, 0);
+        //GameObject child = parentTile.transform.GetChild(0).gameObject;
+        //child.transform.rotation = Quaternion.Euler(0, rot, 0);
         //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0, 90, 0);
         //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
         //Speichere den gewählten Index

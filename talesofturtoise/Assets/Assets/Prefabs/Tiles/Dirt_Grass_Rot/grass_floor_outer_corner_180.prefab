@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422436152909482929}
   m_Layer: 0
-  m_Name: grass_floor_outer_corner 3
+  m_Name: grass_floor_outer_corner_180
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,22 +58,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000021855694
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 418bd02fe1c9fbc418e9d93bc614b983,
         type: 3}
