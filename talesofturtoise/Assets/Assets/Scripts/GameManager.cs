@@ -52,6 +52,12 @@ public class GameManager : MonoBehaviour
                 gameState = GameState.PlaceTile;
                 break;
         }
+
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            entropyStarted = false;
+            StartFindLowestEntropy();
+        }
     }
 
     public void StartGeneration()
@@ -75,9 +81,11 @@ public class GameManager : MonoBehaviour
 
     public void StartCheckNeighbors()
     {
+        Debug.Log("GameManager");
         if (!checkNeighborStarted)
         {
             checkNeighborStarted = true;
+            Debug.Log("starting");
             wfc.CheckNeighbors();
         }
     }

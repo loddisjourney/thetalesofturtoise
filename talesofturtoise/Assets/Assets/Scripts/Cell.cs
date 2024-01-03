@@ -8,13 +8,18 @@ using static UnityEngine.Rendering.DebugUI.Table;
 public class Cell : MonoBehaviour
 {
     public float entropy;
+
     private TileData[] validTiles; //[HideInInspector]
+    public List<TileData> validNeighbors;
     public TileData defaultTile;
+
+    public int collapsedTile;
+
     public bool collapsed = false;
     public bool isNeighbor = false;
+
     public bool newCheck;
-    public List<TileData> validNeighbors;
-    public int collapsedTile;
+
     /*
      * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
      */
@@ -34,6 +39,17 @@ public class Cell : MonoBehaviour
         if(collapsed&&newCheck)
         {
             CheckNewValidTiles();
+        }
+        if (collapsed) isNeighbor = false;
+        if(isNeighbor)
+        {
+            GameObject child = this.transform.GetChild(0).gameObject;
+            child.SetActive(true);
+        }
+        else
+        {
+            GameObject child = this.transform.GetChild(0).gameObject;
+            child.SetActive(false);
         }
     }
 
@@ -63,7 +79,7 @@ public class Cell : MonoBehaviour
             entropy += wahrscheinlichkeit * Mathf.Log(wahrscheinlichkeit, 2);
         }
 
-        Debug.Log("Result of Entropy "+ -entropy + "Count of valid neighbors" + validNeighbors.Count);   
+        //Debug.Log("Result of Entropy "+ -entropy + "Count of valid neighbors" + validNeighbors.Count);   
         return -entropy; 
     }
 
@@ -110,6 +126,9 @@ public class Cell : MonoBehaviour
         {
             //Place air Tile at this Cells Position
             Instantiate(defaultTile.meshObj, this.transform.position, Quaternion.identity);
+
+            //collapsedTile = 0;
+            //validNeighbors.Add(defaultTile);
         }
         
         //Set it to collapsed

@@ -96,7 +96,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 validGridCellList.Add(gridList[g]);
             }
         }
-        Debug.Log("Count " +validGridCellList.Count);
+        Debug.Log("Count of not collapsed " +validGridCellList.Count);
 
         //check if its the first placment
         if(gridList.Count == validGridCellList.Count)
@@ -125,7 +125,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         else if(validGridCellList.Count == 0)
         {
             //Completed Placement
-            //setze level laden auf true aus dem loadings screen level
+            //setze level laden auf true aus dem loadings screen level -> async level loading in einer anderen szene beenden, genshin impact intro
             Debug.Log("done");
             gameManager.gameState = GameManager.GameState.FreeGame;
         }
@@ -137,9 +137,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (gridList[g].gameObject.GetComponent<Cell>().collapsed == false && gridList[g].gameObject.GetComponent<Cell>().isNeighbor == true)
                 {
                     validGridCellList.Add(gridList[g]);
+                    //Debug.Log(gridList[g].gameObject.name);
                 }
             }
-            Debug.Log("Mögliche NAchbarn -------------------------" + validGridCellList.Count);
+            Debug.Log("Mögliche NAchbarn Liste -------------------------" + validGridCellList.Count);
             //Continue Placement
             //First get the Lowest Entropy  of this new List
             float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
@@ -159,7 +160,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             if (lowestGridCellList != null) lowestGridCellList.Clear();
             for (int g = 0; g < validGridCellList.Count; g++)
             {
-                if (lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy())
+                if (lowestEntropy == validGridCellList[g].gameObject.GetComponent<Cell>().CalculateEntropy()) //ggf entropy variable nutzen
                 {
                     lowestGridCellList.Add(validGridCellList[g]);
                     Debug.Log(" 2. Mögliche Cell " + validGridCellList[g].gameObject.name);
@@ -169,7 +170,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Choose a Random of the lowest Entropy Grid Cells
             int randGridCell = UnityEngine.Random.Range(0, lowestGridCellList.Count);
             Debug.Log("4. Indexwahl " + randGridCell + " ist " + lowestGridCellList[randGridCell].name);
-            lowestGridCellList[randGridCell].gameObject.GetComponent<Cell>().isNeighbor = false;
+            
             //Place a Random Tile add this GridCell
             PlaceTile(randGridCell);
         }
@@ -182,15 +183,19 @@ public class WaveFunctionCollapse : MonoBehaviour
         lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
         //füge Grid Cell zur Liste hinzu -> ggf von cells steuern
         collapsedGridCellList.Add(lowestGridCellList[randIndex]);
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().isNeighbor = false;
         gameManager.gameState = GameManager.GameState.CheckNeighbors;
     }
 
     public void CheckNeighbors()
     {
+        //Debug.Log("Collapsed Cells Cound " + collapsedGridCellList.Count);
         //Durchlaufe alle collapsed Cells
-        for(int i = 0; i < collapsedGridCellList.Count; i++)
+        for (int i = 0; i < collapsedGridCellList.Count; i++)
         {
             GameObject currentGridCell = collapsedGridCellList[i];
+            //Debug.Log(i);
             string currentSocket;
             //vielleicht hat er wegen der rotation probleme -> test die rotation zu setzen
             //Nachbar Pos X----------------------------------------------------------------------------------------------- Pos X == Neg X?
@@ -204,12 +209,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                // Debug.Log("kein nachbar");
             }
-            
-            
+
+
             /*...*/
-            
+
             //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?
             try 
             {
@@ -223,7 +228,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                //Debug.Log("kein nachbar");
             }
 
             //Nachbar Pos Z ----------------------------------------------------------------------------------------------- Pos Z == Neg Z?
@@ -238,7 +243,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                // Debug.Log("kein nachbar");
             }
 
 
@@ -254,7 +259,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                //Debug.Log("kein nachbar");
             }
 
 
@@ -269,7 +274,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                // Debug.Log("kein nachbar");
             }
 
 
@@ -284,13 +289,13 @@ public class WaveFunctionCollapse : MonoBehaviour
             catch
             {
                 //kein nachbar
-                Debug.Log("kein nachbar");
+                //Debug.Log("kein nachbar");
             }
 
 
 
             //placetile!!!!!!!!!!!!!!!!!!!!!!!!!!
-            gameManager.gameState = GameManager.GameState.PlaceTile;
+            gameManager.gameState = GameManager.GameState.FreeGame;
         }
     }
 
@@ -303,49 +308,52 @@ public class WaveFunctionCollapse : MonoBehaviour
             if (gridList[xP].transform.position == neighborPos)
             {
                 neighborPosX = gridList[xP];
+                
             }
         }
-        if (neighborPosX != null)
+        if (neighborPosX != null && neighborPosX.gameObject.GetComponent<Cell>().collapsed == false)
         {
+            Debug.Log("Check +X");
             //füge nachbar zur liste zu
-            if(neighborPosX.gameObject.GetComponent<Cell>().collapsed == false && neighborPosX.gameObject.GetComponent<Cell>().isNeighbor == false)
+            if (neighborPosX.gameObject.GetComponent<Cell>().collapsed == false)
             {
                 neighborPosX.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new Neighbor "+ neighborPosX.gameObject.name);
             }
-            
-            //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
+            //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
+            
             for (int xA = 0; xA < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                //Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[xA].nX; //Tile Data Object aus der Liste und von dieser Tile Data der Negativ X Nachbar als gegen Socket zum Current von Positiv
-                Debug.Log("Neighbor " + neighborSocket);
-
+                //Debug.Log("Neighbor " + neighborSocket);
+                //Debug.Log("Neighbor socket " + neighborSocket);
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
                 //wenn Pos X == Neg X dann symetrisch => zahl+s
                 if (currentSocket == neighborSocket)
                 {
-                    //symmetrisch
+                    //symmetrisch zb 0s
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if(currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        // Debug.Log("is sym"); zb 1f und 1
                     }
                 }
                 else if(isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    //Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym"); 1 und 1f
                     }
                 }
                 else if(currentSocket.Contains("v"))
@@ -360,10 +368,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
-                    Debug.Log("Entropy davor" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
+                    //Debug.Log("Delete");
+                    //Debug.Log("Entropy davor" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
                     neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
-                    Debug.Log("Entropy danach" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
+                    //Debug.Log("Entropy danach" + neighborPosX.gameObject.GetComponent<Cell>().CalculateEntropy());
                 }
 
             }
@@ -381,21 +389,23 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborNegX = gridList[xP];
             }
         }
-        if (neighborNegX != null)
+        if (neighborNegX != null && neighborNegX.gameObject.GetComponent<Cell>().collapsed == false)
         {
+            Debug.Log("Check -X");
             //füge nachbar zur liste zu
             if (neighborNegX.gameObject.GetComponent<Cell>().collapsed == false && neighborNegX.gameObject.GetComponent<Cell>().isNeighbor == false)
             {
                 neighborNegX.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new NEighbor");
             }
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                //Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[xA].pX;
-                Debug.Log("Neighbor " + neighborSocket);
+                //Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
@@ -406,21 +416,21 @@ public class WaveFunctionCollapse : MonoBehaviour
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if (currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    //Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (currentSocket.Contains("v"))
@@ -435,7 +445,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
+                    //Debug.Log("Delete");
                     neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
                 }
 
@@ -454,22 +464,24 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborPosZ = gridList[xP];
             }
         }
-        if (neighborPosZ != null)
+        if (neighborPosZ != null && neighborPosZ.gameObject.GetComponent<Cell>().collapsed == false)
         {
+            Debug.Log("Check +Z");
             //füge nachbar zur liste zu
             if (neighborPosZ.gameObject.GetComponent<Cell>().collapsed == false && neighborPosZ.gameObject.GetComponent<Cell>().isNeighbor == false)
             {
                 neighborPosZ.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new NEighbor");
             }
 
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                //Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[xA].nZ;
-                Debug.Log("Neighbor " + neighborSocket);
+                //Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
@@ -480,21 +492,21 @@ public class WaveFunctionCollapse : MonoBehaviour
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if (currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    //Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (currentSocket.Contains("v"))
@@ -509,7 +521,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
+                    //Debug.Log("Delete");
                     neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
                 }
 
@@ -528,22 +540,24 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborNegZ = gridList[xP];
             }
         }
-        if (neighborNegZ != null)
+        if (neighborNegZ != null && neighborNegZ.gameObject.GetComponent<Cell>().collapsed == false)
         {
+            Debug.Log("Check -Z");
             //füge nachbar zur liste zu
             if (neighborNegZ.gameObject.GetComponent<Cell>().collapsed == false && neighborNegZ.gameObject.GetComponent<Cell>().isNeighbor == false)
             {
                 neighborNegZ.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new NEighbor");
             }
 
             //Vergleiche das PosX Socket von current mit sllen möglichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
             for (int xA = 0; xA < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                //Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[xA].pZ;
-                Debug.Log("Neighbor " + neighborSocket);
+                //Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
@@ -554,21 +568,21 @@ public class WaveFunctionCollapse : MonoBehaviour
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if (currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    //Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (currentSocket.Contains("v"))
@@ -583,7 +597,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
+                    //Debug.Log("Delete");
                     neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
                 }
 
@@ -602,12 +616,14 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborPosY = gridList[xP];
             }
         }
-        if (neighborPosY != null)
+        if (neighborPosY != null && neighborPosY.gameObject.GetComponent<Cell>().collapsed == false )
         {
+            Debug.Log("Check +Y");
             //füge nachbar zur liste zu
             if (neighborPosY.gameObject.GetComponent<Cell>().collapsed == false && neighborPosY.gameObject.GetComponent<Cell>().isNeighbor == false)
             {
                 neighborPosY.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new NEighbor");
             }
 
 
@@ -615,10 +631,10 @@ public class WaveFunctionCollapse : MonoBehaviour
 
             for (int xA = 0; xA < neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                //Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborPosY.gameObject.GetComponent<Cell>().validNeighbors[xA].nY;
-                Debug.Log("Neighbor " + neighborSocket);
+                //Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
@@ -629,21 +645,21 @@ public class WaveFunctionCollapse : MonoBehaviour
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if (currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    //Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        // Debug.Log("is sym");
                     }
                 }
                 else if (currentSocket.Contains("v"))
@@ -658,7 +674,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
+                    // Debug.Log("Delete");
                     neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
                 }
 
@@ -668,6 +684,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void NegYNeighbor(string currentSocket, Vector3 neighborPos)
     {
+        
         //Find this neighbor
         GameObject neighborNegY = null;
         for (int xP = 0; xP < gridList.Count; xP++)
@@ -677,12 +694,14 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborNegY = gridList[xP];
             }
         }
-        if (neighborNegY != null)
+        if (neighborNegY != null && neighborNegY.gameObject.GetComponent<Cell>().collapsed == false)
         {
+            Debug.Log("Check -Y");
             //füge nachbar zur liste zu
             if (neighborNegY.gameObject.GetComponent<Cell>().collapsed == false && neighborNegY.gameObject.GetComponent<Cell>().isNeighbor == false)
             {
                 neighborNegY.gameObject.GetComponent<Cell>().isNeighbor = true;
+                //Debug.Log("new NEighbor");
             }
 
 
@@ -690,10 +709,10 @@ public class WaveFunctionCollapse : MonoBehaviour
 
             for (int xA = 0; xA < neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
             {
-                Debug.Log("Current " + currentSocket);
+                // Debug.Log("Current " + currentSocket);
 
                 string neighborSocket = neighborNegY.gameObject.GetComponent<Cell>().validNeighbors[xA].pY;
-                Debug.Log("Neighbor " + neighborSocket);
+                // Debug.Log("Neighbor " + neighborSocket);
 
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
@@ -704,21 +723,21 @@ public class WaveFunctionCollapse : MonoBehaviour
                 }
                 else if (currentSocket.Contains("f"))
                 {
-                    Debug.Log("is flipped");
+                    //Debug.Log("is flipped");
                     //Check if neighbor is none flipped
                     if (currentSocket == neighborSocket + "f")
                     {
-                        Debug.Log("is sym");
+                        //Debug.Log("is sym");
                     }
                 }
                 else if (isNoneFlipped)
                 {
-                    Debug.Log("is none flipped");
+                    // Debug.Log("is none flipped");
 
                     //Check if Neighbor is flipped
                     if (currentSocket + "f" == neighborSocket)
                     {
-                        Debug.Log("is sym");
+                        //  Debug.Log("is sym");
                     }
                 }
                 else if (currentSocket.Contains("v"))
@@ -733,7 +752,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 else
                 {
                     //Sie sind ungleich und damit raus
-                    Debug.Log("Delete");
+                    // Debug.Log("Delete");
                     neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
                 }
 
