@@ -65,49 +65,31 @@ public class TileData : ScriptableObject
     */
 
 
-    // THIS WILL MAYBE BE REMOVED
-    [Header("Neighbors")]
-    //Maybe a List to specifiy valid neighbors 
-    public List<string[]> valid_neighbors; //[...] 
+    //// THIS WILL MAYBE BE REMOVED
+    //[Header("Neighbors")]
+    ////Maybe a List to specifiy valid neighbors 
+    //public List<string[]> valid_neighbors; //[...] 
 
-    public string[] pX_Neighbor;
-    public string[] nX_Neighbor;
-    public string[] pZ_Neighbor;
-    public string[] nZ_Neighbor;
-    public string[] pY_Neighbor;
-    public string[] nY_Neighbor;
-
-
-    private void Awake()
-    {
-        valid_neighbors = new List<string[]>
-        {
-            pX_Neighbor,
-            nX_Neighbor,
-            pZ_Neighbor,
-            nZ_Neighbor,
-            pY_Neighbor,
-            nY_Neighbor
-        };
-    }
+    //public string[] pX_Neighbor;
+    //public string[] nX_Neighbor;
+    //public string[] pZ_Neighbor;
+    //public string[] nZ_Neighbor;
+    //public string[] pY_Neighbor;
+    //public string[] nY_Neighbor;
 
 
-
-    //Maybe usefull for error handeling to reset a default = air tile
-    public void ResetData()
-    {
-        name = "-1";
-        meshObj = null;
-        rotation = Rotation.r0;
-        weight = 0;
-        pX = "-1";
-        nX = "-1";
-        pZ = "-1";
-        nZ = "-1";
-        pY = "-1";
-        nY = "-1";
-
-    }
+    //private void Awake()
+    //{
+    //    valid_neighbors = new List<string[]>
+    //    {
+    //        pX_Neighbor,
+    //        nX_Neighbor,
+    //        pZ_Neighbor,
+    //        nZ_Neighbor,
+    //        pY_Neighbor,
+    //        nY_Neighbor
+    //    };
+    //}
 
     public enum Rotation
     {
@@ -115,6 +97,14 @@ public class TileData : ScriptableObject
         r90,
         r180,
         r270
+    }
+
+    public enum TileRotation
+    {
+        r0 = 0,
+        r90 = 90,
+        r180 = 180,
+        r270 =270
     }
 
 }

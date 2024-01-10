@@ -46,6 +46,10 @@ public class WaveFunctionCollapse : MonoBehaviour
         {
            FindLowestEntropy();
         }
+
+
+       
+
     }
 
     public void GenerateGrid()
@@ -82,10 +86,9 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     public void FindLowestEntropy()
     {
-
         //Go through all GridCells which are not collapsed already and Find the lowest Entropy.. safe it in a list/array
         //Create List of not collapsed Grid Cells
-        if(validGridCellList != null) validGridCellList.Clear();
+        if (validGridCellList != null) validGridCellList.Clear();
         for (int g = 0; g < gridList.Count; g++)
         {
             if(gridList[g].gameObject.GetComponent<Cell>().collapsed == false)
@@ -359,7 +362,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
                 Debug.Log("+X " + currentSocket + " " + currentNeighborTile.nX);
             }
+            Debug.Log("Übrig gebliebne Nachbarn");
+            for (int i = 0; i < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+X " + currentSocket + " " + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[i].nX); }
         }
+        Debug.Log("---");
     }
 
     public void NegXNeighbor(string currentSocket, Vector3 neighborPos)
@@ -437,7 +443,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
                 Debug.Log("-X " + currentSocket + " " + currentNeighborTile.pX);
             }
+            Debug.Log("Übrig gebliebne Nachbarn--------------------");
+            for (int i = 0; i < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-X " + currentSocket + " " + neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[i].pX); }
         }
+        Debug.Log("---");
     }
 
     public void PosZNeighbor(string currentSocket, Vector3 neighborPos)
@@ -514,7 +523,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
                 Debug.Log("+Z " + currentSocket + " " + currentNeighborTile.nZ);
             }
+            Debug.Log("Übrig gebliebne Nachbarn--------------------");
+            for (int i = 0; i < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+Z " + currentSocket + " " + neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[i].nZ); }
         }
+        Debug.Log("---");
     }
 
     public void NegZNeighbor(string currentSocket, Vector3 neighborPos)
@@ -591,7 +603,10 @@ public class WaveFunctionCollapse : MonoBehaviour
                 neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
                 Debug.Log("-Z " + currentSocket + " " + currentNeighborTile.pZ);
             }
+            Debug.Log("Übrig gebliebne Nachbarn--------------------");
+            for (int i = 0; i < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-Z " + currentSocket + " " + neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[i].pZ); }
         }
+        Debug.Log("---");
     }
 
     public void PosYNeighbor(string currentSocket, Vector3 neighborPos)
@@ -668,6 +683,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 Debug.Log("+Y " + currentSocket + " " + currentNeighborTile.nY);
             }
         }
+        Debug.Log("---");
     }
 
     public void NegYNeighbor(string currentSocket, Vector3 neighborPos)
@@ -746,6 +762,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 Debug.Log("-Y " + currentSocket + " " + currentNeighborTile.pY);
             }
         }
+        Debug.Log("---");
     }
 
     public bool ContainsOnlyDigitCheck(string s)
