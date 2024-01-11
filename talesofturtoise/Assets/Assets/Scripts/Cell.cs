@@ -84,7 +84,7 @@ public class Cell : MonoBehaviour
     public float CalculateEntropy()
     {
         //Calculates the Entropy of the Cell with the Count and Weight of the valid Tiles
-        //Weight ist die Wahrscheinlichkeit das das Tile gewählt werden soll, je höher desto höher die Wahrscheinlichkeit
+        //Weight ist die Wahrscheinlichkeit das das Tile gew?hlt werden soll, je h?her desto h?her die Wahrscheinlichkeit
         entropy = 0;
         //Summe der gesammten Weights
         float totalWeight = 0;
@@ -93,8 +93,8 @@ public class Cell : MonoBehaviour
             totalWeight += validNeighbors[i].weight;
         }
 
-        //Die Entropy ist die Summe der Wahrscheinlichkeit der möglichen Tiles multipliziert mit dem Logarithmus der ahrscheinlichkeit des Tiles, das Ergebnis wird negiert
-        //Die Wahrscheinlihckeit ist das Weight des aktuellen möglichen Tiles durch die addierte gesammten Weightrs alller möglichen Weights
+        //Die Entropy ist die Summe der Wahrscheinlichkeit der m?glichen Tiles multipliziert mit dem Logarithmus der ahrscheinlichkeit des Tiles, das Ergebnis wird negiert
+        //Die Wahrscheinlihckeit ist das Weight des aktuellen m?glichen Tiles durch die addierte gesammten Weightrs alller m?glichen Weights
         for (int i = 0; i < validNeighbors.Count; i++)
         {
             float wahrscheinlichkeit = validNeighbors[i].weight / totalWeight;
@@ -113,7 +113,7 @@ public class Cell : MonoBehaviour
             int randTile = UnityEngine.Random.Range(0, validNeighbors.Count);
             
             //Get the rotation of the tile => muss nochmal verbessert werden indem die enums integer zugeweisen werden und dann statt verzweigung direkt in das instantiate (int)rotation aufgerufen wird; Problem: 200x neu rot setzen https://discussions.unity.com/t/use-an-integer-as-an-enum/63612/2
-            //add new enum und lösche das andere am ende der aufgabe... falls dadurch alle tile infos raus gehen
+            //add new enum und l?sche das andere am ende der aufgabe... falls dadurch alle tile infos raus gehen
             int rot = 0;
             if(validNeighbors[randTile].rotation == TileData.Rotation.r0)
             {
@@ -139,7 +139,7 @@ public class Cell : MonoBehaviour
             //child.transform.rotation = Quaternion.Euler(0, rot, 0);
             //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0,90,0); 
             //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
-            //Speichere den gewählten Index
+            //Speichere den gew?hlten Index
             collapsedTile = randTile;
         }
         else
@@ -163,7 +163,7 @@ public class Cell : MonoBehaviour
         int grasTile = 0;
         for(int i = 0; i < validTiles.Length; i++)
         {
-            if(validTiles[i].meshObj.name =="ground_base")
+            if(validTiles[i].meshObj.name =="grass_floor_edge_90")
             {
                 grasTile = i;
                 collapsedTile = i;
@@ -194,7 +194,7 @@ public class Cell : MonoBehaviour
         //child.transform.rotation = Quaternion.Euler(0, rot, 0);
         //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0, 90, 0);
         //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
-        //Speichere den gewählten Index
+        //Speichere den gew?hlten Index
 
         collapsed = true;
        
@@ -203,7 +203,7 @@ public class Cell : MonoBehaviour
     //public void CheckNewValidTiles()
     //{
     //    //only if collapsed it should to this
-    //    //check ob das gewählte tile an den nachbarn das gleiche hat wenn nicht streiche das mesh name aus dem array
+    //    //check ob das gew?hlte tile an den nachbarn das gleiche hat wenn nicht streiche das mesh name aus dem array
     //    if (newCheck)
     //    {
     //        newCheck = false;
