@@ -10,20 +10,15 @@ public class LoadingManager : MonoBehaviour
 
     void Start()
     {
-        
+        SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
     }
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space))
-        {
-            SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
-        }
-
-        if(Input.GetKeyUp(KeyCode.U))
-        {
-
-        }
+        //if(Input.GetKeyUp(KeyCode.Space))
+       //{
+        //    SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
+        //}
     }
 
 }
