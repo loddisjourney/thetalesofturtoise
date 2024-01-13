@@ -305,7 +305,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             
         }
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        FindLowestEntropy();
+        //FindLowestEntropy();
     }
 
     public void PosXNeighbor(string currentSocket, Vector3 neighborPos)
