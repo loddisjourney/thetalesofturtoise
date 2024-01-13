@@ -41,7 +41,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     private GameObject[,,] gridArray;
 
-    public bool levelGenerated = false;
+    public static bool levelGenerated = false;
 
     public GameObject _player;
     public GameObject _camera;
@@ -63,8 +63,16 @@ public class WaveFunctionCollapse : MonoBehaviour
             FindLowestEntropy();
         }
 
+        // Unload Loading Scene
+        if (levelGenerated)
+        {
+            Debug.Log("unloading...");
+            SceneManager.UnloadSceneAsync("LoadingLevel");
+            //levelGenerated = true;
+            _camera.SetActive(true);
+            _player.SetActive(true);
+        }
 
-       
 
     }
 
@@ -143,12 +151,11 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Completed Placement
             //setze level laden auf true aus dem loadings screen level -> async level loading in einer anderen szene beenden, genshin impact intro
             Debug.Log("done");
+            LoadingManager.levelLoaded = true;
 
-            // Unload Scene
-            SceneManager.UnloadSceneAsync("LoadingLevel");
-            levelGenerated = true;
-            _camera.SetActive(true);
-            _player.SetActive(true);
+            
+
+            
         }
         else
         {
