@@ -2155,16 +2155,16 @@ Transform:
   - {fileID: 1154702560}
   - {fileID: 157682029}
   - {fileID: 2146172724}
+  - {fileID: 713855716}
+  - {fileID: 14263332}
+  - {fileID: 577405473}
+  - {fileID: 714912223}
   - {fileID: 33408999}
   - {fileID: 1836417000}
   - {fileID: 1356367150}
   - {fileID: 1513250893}
   - {fileID: 359604607}
   - {fileID: 852621346}
-  - {fileID: 713855716}
-  - {fileID: 14263332}
-  - {fileID: 577405473}
-  - {fileID: 714912223}
   - {fileID: 478434392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2204,6 +2204,9 @@ MonoBehaviour:
   loaderParent: {fileID: 1716051795}
   turtle: {fileID: 493038377}
   placeTime: 1
+  lineObjs: []
+  startColor: {r: 0.5372549, g: 0.23137255, b: 0.27085054, a: 1}
+  endColor: {r: 0.3882353, g: 0.5372549, b: 0.23137255, a: 1}
 --- !u!4 &1763107487
 Transform:
   m_ObjectHideFlags: 0

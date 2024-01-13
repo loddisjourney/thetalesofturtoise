@@ -71,6 +71,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //levelGenerated = true;
             _camera.SetActive(true);
             _player.SetActive(true);
+            levelGenerated = false;
         }
 
 
