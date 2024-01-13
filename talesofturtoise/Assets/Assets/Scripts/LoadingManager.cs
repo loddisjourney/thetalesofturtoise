@@ -49,7 +49,7 @@ public class LoadingManager : MonoBehaviour
         //     positionOfZ++;
         //     i++;
         // }
-        Debug.Log("timer " + timer);
+       // Debug.Log("timer " + timer);
         timer -= Time.deltaTime;
 
            
@@ -61,6 +61,10 @@ public class LoadingManager : MonoBehaviour
 
             //Add end part and ask fpor progress => float progress =  current cound of cells / count of cells .. while progress != 1 do function -> is called from other script or is asked if some cells is collapsing
             // over time until the scene is done
+
+            // next change color
+
+            //implement cell list with weight count and probaility
 
         
     }

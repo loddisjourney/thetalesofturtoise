@@ -42,6 +42,8 @@ public class Cell : MonoBehaviour
     }
     public TileData defaultTile;
 
+    public List<TileData> tilesTicketList;
+
     public int collapsedTile;
 
     public bool collapsed = false;
@@ -118,30 +120,40 @@ public class Cell : MonoBehaviour
         //Choose a random Tile if its not empty
         if(validNeighbors.Count != 0)
         {
-            int randTile = UnityEngine.Random.Range(0, validNeighbors.Count);
+            //use the weight to choose a tile based on it --> ggf bessere und effizientere art
+            for(int i = 0; i < validNeighbors.Count; i++)
+            {
+                int probaility = validNeighbors[i].weight;
+                for(int j = 0; j < probaility; j++)
+                {
+                    tilesTicketList.Add(validNeighbors[i]);
+                }
+            }
+            
+            int randTile = UnityEngine.Random.Range(0, tilesTicketList.Count); // statt valid neighbor
             
             //Get the rotation of the tile => muss nochmal verbessert werden indem die enums integer zugeweisen werden und dann statt verzweigung direkt in das instantiate (int)rotation aufgerufen wird; Problem: 200x neu rot setzen https://discussions.unity.com/t/use-an-integer-as-an-enum/63612/2
             //add new enum und l?sche das andere am ende der aufgabe... falls dadurch alle tile infos raus gehen
             int rot = 0;
-            if(validNeighbors[randTile].rotation == TileData.Rotation.r0)
+            if(tilesTicketList[randTile].rotation == TileData.Rotation.r0)
             {
                 rot = 0;
             }
-            else if(validNeighbors[randTile].rotation == TileData.Rotation.r90)
+            else if(tilesTicketList[randTile].rotation == TileData.Rotation.r90)
             {
                 rot = 90;
             }
-            else if (validNeighbors[randTile].rotation == TileData.Rotation.r180)
+            else if (tilesTicketList[randTile].rotation == TileData.Rotation.r180)
             {
                 rot = 180;
             }
-            else if (validNeighbors[randTile].rotation == TileData.Rotation.r270)
+            else if (tilesTicketList[randTile].rotation == TileData.Rotation.r270)
             {
                 rot = 270;
             }
             
             //Place random Tile at this Cells Position
-            GameObject chosenTile = validNeighbors[randTile].meshObj;
+            GameObject chosenTile = tilesTicketList[randTile].meshObj;
             GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
             //GameObject child = parentTile.transform.GetChild(0).gameObject;
             //child.transform.rotation = Quaternion.Euler(0, rot, 0);
@@ -167,37 +179,48 @@ public class Cell : MonoBehaviour
 
     public void FirstTile()
     {
-        //Place first tile with specific gras ground
-        
-        int grasTile = 0;
-        for(int i = 0; i < validTiles.Length; i++)
+
+        //use the weight to choose a tile based on it --> ggf bessere und effizientere art --> erster aufruf zum initialisieren fuer nachbar abfrage
+        for (int i = 0; i < validNeighbors.Count; i++)
         {
-            if(validTiles[i].meshObj.name =="grass_floor_edge_90")
+            int probaility = validNeighbors[i].weight;
+            for (int j = 0; j < probaility; j++)
+            {
+                tilesTicketList.Add(validNeighbors[i]);
+            }
+        }
+
+        //Place first tile with specific gras ground
+
+        int grasTile = 0;
+        for(int i = 0; i < tilesTicketList.Count; i++)
+        {
+            if(tilesTicketList[i].meshObj.name =="grass_base")
             {
                 grasTile = i;
                 collapsedTile = i;
             }
         }
         int rot = 0;
-        if (validTiles[grasTile].rotation == TileData.Rotation.r0)
+        if (tilesTicketList[grasTile].rotation == TileData.Rotation.r0)
         {
             rot = 0;
         }
-        else if (validTiles[grasTile].rotation == TileData.Rotation.r90)
+        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r90)
         {
             rot = 90;
         }
-        else if (validTiles[grasTile].rotation == TileData.Rotation.r180)
+        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r180)
         {
             rot = 180;
         }
-        else if (validTiles[grasTile].rotation == TileData.Rotation.r270)
+        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r270)
         {
             rot = 270;
         }
         
         //Place random Tile at this Cells Position
-        GameObject chosenTile = validTiles[grasTile].meshObj;
+        GameObject chosenTile = tilesTicketList[grasTile].meshObj;
         GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
         //GameObject child = parentTile.transform.GetChild(0).gameObject;
         //child.transform.rotation = Quaternion.Euler(0, rot, 0);
