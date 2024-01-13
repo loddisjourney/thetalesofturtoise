@@ -35,7 +35,9 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     private GameObject[,,] gridArray;
 
+    public bool levelGenerated = false;
 
+    public GameObject _player;
 
     // Start is called before the first frame update
     void Start()
@@ -133,6 +135,8 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Completed Placement
             //setze level laden auf true aus dem loadings screen level -> async level loading in einer anderen szene beenden, genshin impact intro
             Debug.Log("done");
+            levelGenerated = true;
+            _player.SetActive(true);
         }
         else
         {
@@ -301,7 +305,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             
         }
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-       // FindLowestEntropy();
+        FindLowestEntropy();
     }
 
     public void PosXNeighbor(string currentSocket, Vector3 neighborPos)
