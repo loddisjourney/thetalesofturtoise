@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-
+    public Material skybox;
 
     void Start()
     {
         SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
+        RenderSettings.skybox = skybox;
     }
 
     private void Update()
