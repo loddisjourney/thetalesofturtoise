@@ -49,12 +49,20 @@ public class Cell : MonoBehaviour
 
     public bool newCheck;
 
+    [SerializeField] private GameObject mapParent;
+
     /*
      * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
      */
+
+    private void Awake()
+    {
+        //Nicht optimal ggf. wenn es nicht gefundne wird eins erstellen unter LevelGenerator
+        mapParent = GameObject.Find("LevelMap");
+    }
     private void Start()
     {
-       
+        
     }
     private void Update()
     {
@@ -140,6 +148,7 @@ public class Cell : MonoBehaviour
             //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0,90,0); 
             //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
             //Speichere den gew?hlten Index
+            parentTile.transform.parent = mapParent.transform;
             collapsedTile = randTile;
         }
         else
@@ -195,7 +204,7 @@ public class Cell : MonoBehaviour
         //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0, 90, 0);
         //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
         //Speichere den gew?hlten Index
-
+        parentTile.transform.parent = mapParent.transform;
         collapsed = true;
        
     }

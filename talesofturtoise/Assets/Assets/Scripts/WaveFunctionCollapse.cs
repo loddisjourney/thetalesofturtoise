@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveFunctionCollapse : MonoBehaviour
 {
@@ -33,18 +34,24 @@ public class WaveFunctionCollapse : MonoBehaviour
     [SerializeField] private GameObject waterParent;
     private GameObject currentWaterElement;
 
+    [SerializeField] private GameObject cellParent;
+
+    [SerializeField] private Material skybox1;
+
+
     private GameObject[,,] gridArray;
 
     public bool levelGenerated = false;
 
     public GameObject _player;
+    public GameObject _camera;
 
     // Start is called before the first frame update
     void Start()
     {
         gridArray = new GameObject[length, height, width];
         GenerateGrid();
-        
+        RenderSettings.skybox = skybox1;
     }
 
     // Update is called once per frame
@@ -52,7 +59,8 @@ public class WaveFunctionCollapse : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-           FindLowestEntropy();
+          
+            FindLowestEntropy();
         }
 
 
@@ -73,7 +81,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     //Create a Grid Cell at x y z position and use this as identifier + set as child of this object
                     currentCell = Instantiate(gridCell, new Vector3(x, y, z), Quaternion.identity);
                     currentCell.name = $"Cell {x} {y} {z}";
-                    currentCell.transform.parent = this.transform;
+                    currentCell.transform.parent = cellParent.transform;
                     gridList.Add(currentCell);
                     gridArray[x,y,z] = currentCell;
                 }
@@ -135,7 +143,11 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Completed Placement
             //setze level laden auf true aus dem loadings screen level -> async level loading in einer anderen szene beenden, genshin impact intro
             Debug.Log("done");
+
+            // Unload Scene
+            SceneManager.UnloadSceneAsync("LoadingLevel");
             levelGenerated = true;
+            _camera.SetActive(true);
             _player.SetActive(true);
         }
         else

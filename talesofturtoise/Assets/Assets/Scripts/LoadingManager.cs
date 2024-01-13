@@ -6,48 +6,24 @@ using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
-    public Text m_Text;
-    public Button m_Button;
+
 
     void Start()
     {
-        //Call the LoadButton() function when the user clicks this Button
-        m_Button.onClick.AddListener(LoadButton);
+        
     }
 
-    public void LoadButton()
+    private void Update()
     {
-        //Start loading the Scene asynchronously and output the progress bar
-        StartCoroutine(LoadScene());
-    }
-
-    IEnumerator LoadScene()
-    {
-        yield return null;
-
-        //Begin to load the Scene you specify
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("GeneratedLevel");
-        //Don't let the Scene activate until you allow it to
-        asyncOperation.allowSceneActivation = false;
-        Debug.Log("Pro :" + asyncOperation.progress);
-        //When the load is still in progress, output the Text and progress bar
-        while (!asyncOperation.isDone)
+        if(Input.GetKeyUp(KeyCode.Space))
         {
-            //Output the current progress
-            m_Text.text = "Loading progress: " + (asyncOperation.progress * 100) + "%";
+            SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
+        }
 
-            // Check if the load has finished
-            if (asyncOperation.progress >= 0.9f)
-            {
-                //Change the Text to show the Scene is ready
-                m_Text.text = "Press the space bar to continue";
-                //Wait to you press the space key to activate the Scene
-                if (Input.GetKeyDown(KeyCode.Space))
-                    //Activate the Scene
-                    asyncOperation.allowSceneActivation = true;
-            }
+        if(Input.GetKeyUp(KeyCode.U))
+        {
 
-            yield return null;
         }
     }
+
 }
