@@ -160,7 +160,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     validGridCellList.Add(gridList[g]);
                 }
             }
-            Debug.Log("M?gliche NAchbarn Liste -------------------------" + validGridCellList.Count);
+            //Debug.Log("M?gliche NAchbarn Liste -------------------------" + validGridCellList.Count);
             //Continue Placement
             //First get the Lowest Entropy  of this new List
             float lowestEntropy = float.PositiveInfinity; //https://forum.unity.com/threads/finding-the-index-of-the-lowest-valued-element-in-an-array.295195/
@@ -230,7 +230,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
                 Vector3 neighborFrontPos = currentGridCell.transform.position + new Vector3(1, 0, 0);
               //  n = gridArray[x + 1, y, z];
-               Debug.Log(currentGridCell.transform.position +"-----");
+               //Debug.Log(currentGridCell.transform.position +"-----");
                 PosXNeighbor(currentSocket, neighborFrontPos);
             }
             catch
@@ -317,7 +317,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             
         }
         //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //FindLowestEntropy();
+        FindLowestEntropy();
     }
 
     public void PosXNeighbor(string currentSocket, Vector3 neighborPos)
@@ -335,7 +335,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         if (neighborPosX != null && neighborPosX.gameObject.GetComponent<Cell>().collapsed == false)
         {
             // Debug.Log("Check +X");
-            Debug.Log(neighborPosX.transform.position + "-----");
+            //Debug.Log(neighborPosX.transform.position + "-----");
             //f?ge nachbar zur liste zu
             neighborPosX.gameObject.GetComponent<Cell>().isNeighbor = true;
             
@@ -356,7 +356,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 //check if its none flipped => only digits 
                 bool isNoneFlipped = ContainsOnlyDigitCheck(currentSocket);
 
-                Debug.Log("Teste " + currentSocket + " " + neighborSocket);
+                //Debug.Log("Teste " + currentSocket + " " + neighborSocket);
 
 
                  bool sym = VegleichSockets(currentSocket, neighborSocket);
@@ -364,7 +364,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if(!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                   // Debug.Log("ungleich");
                 }
 
                 bool ha = false;
@@ -420,16 +420,16 @@ public class WaveFunctionCollapse : MonoBehaviour
 
             }
             
-            Debug.Log("l?schende Nachbarn " + invalidNeighborList.Count);
+           // Debug.Log("l?schende Nachbarn " + invalidNeighborList.Count);
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("+X " + currentSocket + " " + currentNeighborTile.nX + " ");
+               // Debug.Log("+X " + currentSocket + " " + currentNeighborTile.nX + " ");
             }
-            Debug.Log("?brig gebliebne Nachbarn" + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count);
-            for (int i = 0; i < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+X " + currentSocket + " " + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[i].nX ); }
+           // Debug.Log("?brig gebliebne Nachbarn" + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count);
+            //for (int i = 0; i < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+X " + currentSocket + " " + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[i].nX ); }
         }
-        Debug.Log("---");
+      //  Debug.Log("---");
     }
 
     public bool VegleichSockets(string currentSocket, string neighborSocket)
@@ -441,7 +441,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             if (currentSocket == neighborSocket && currentSocket.Contains("s")) //!!! currentSocket == neighborSocket wegen 2 und 2 und 2f und 2f
             {
                 //symmetrisch zb 0s
-                Debug.Log("beide s");
+               // Debug.Log("beide s");
                 return true;
             }
             else if (currentSocket.Contains("f"))
@@ -451,7 +451,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (currentSocket == neighborSocket + "f")
                 {
                     //symmetrisch zb 1f und 1
-                    Debug.Log("current hat f nachbar nicht");
+                  //  Debug.Log("current hat f nachbar nicht");
                     return true;
 
                 }
@@ -464,7 +464,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (currentSocket + "f" == neighborSocket)
                 {
                     //symmetrisch 1 und 1f
-                    Debug.Log("true " + currentSocket + " and " + neighborSocket);
+                   // Debug.Log("true " + currentSocket + " and " + neighborSocket);
                     return true;
                 }
             }
@@ -475,7 +475,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (currentSocket == neighborSocket)
                 {
                     //both vertical
-                    Debug.Log("beide v");
+                  //  Debug.Log("beide v");
                     return true;
                 }
             }
@@ -483,7 +483,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             {
                 //ungleich
                 return false;
-                Debug.Log("ungleich");
+              //  Debug.Log("ungleich");
                 //neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
             }       
         return false;
@@ -521,7 +521,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                   // Debug.Log("ungleich");
                 }
 
                 bool ha = false;
@@ -580,12 +580,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("-X " + currentSocket + " " + currentNeighborTile.pX);
+               // Debug.Log("-X " + currentSocket + " " + currentNeighborTile.pX);
             }
-            Debug.Log("?brig gebliebne Nachbarn--------------------");
-            for (int i = 0; i < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-X " + currentSocket + " " + neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[i].pX); }
+           // Debug.Log("?brig gebliebne Nachbarn--------------------");
+         //   for (int i = 0; i < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-X " + currentSocket + " " + neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[i].pX); }
         }
-        Debug.Log("---");
+       // Debug.Log("---");
     }
 
     public void PosZNeighbor(string currentSocket, Vector3 neighborPos)
@@ -618,7 +618,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                   // Debug.Log("ungleich");
                 }
 
                 bool ha = false;
@@ -673,12 +673,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("+Z " + currentSocket + " " + currentNeighborTile.nZ);
+               // Debug.Log("+Z " + currentSocket + " " + currentNeighborTile.nZ);
             }
-            Debug.Log("?brig gebliebne Nachbarn--------------------");
-            for (int i = 0; i < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+Z " + currentSocket + " " + neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[i].nZ); }
+           // Debug.Log("?brig gebliebne Nachbarn--------------------");
+           // for (int i = 0; i < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+Z " + currentSocket + " " + neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[i].nZ); }
         }
-        Debug.Log("---");
+       // Debug.Log("---");
     }
 
     public void NegZNeighbor(string currentSocket, Vector3 neighborPos)
@@ -711,7 +711,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                  //  Debug.Log("ungleich");
                 }
 
                 bool ha = false;
@@ -766,12 +766,12 @@ public class WaveFunctionCollapse : MonoBehaviour
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("-Z " + currentSocket + " " + currentNeighborTile.pZ);
+               // Debug.Log("-Z " + currentSocket + " " + currentNeighborTile.pZ);
             }
-            Debug.Log("?brig gebliebne Nachbarn--------------------");
-            for (int i = 0; i < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-Z " + currentSocket + " " + neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[i].pZ); }
+         //   Debug.Log("?brig gebliebne Nachbarn--------------------");
+           // for (int i = 0; i < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-Z " + currentSocket + " " + neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[i].pZ); }
         }
-        Debug.Log("---");
+        //Debug.Log("---");
     }
 
     public void PosYNeighbor(string currentSocket, Vector3 neighborPos)
@@ -804,7 +804,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                  //  Debug.Log("ungleich");
                 }
 
 
@@ -860,10 +860,10 @@ public class WaveFunctionCollapse : MonoBehaviour
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("+Y " + currentSocket + " " + currentNeighborTile.nY);
+               // Debug.Log("+Y " + currentSocket + " " + currentNeighborTile.nY);
             }
         }
-        Debug.Log("---");
+       // Debug.Log("---");
     }
 
     public void NegYNeighbor(string currentSocket, Vector3 neighborPos)
@@ -897,7 +897,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 if (!sym)
                 {
                     invalidNeighborList.Add(currentNeighborTile);
-                    Debug.Log("ungleich");
+                   // Debug.Log("ungleich");
                 }
 
                 bool ha = false;
@@ -952,10 +952,10 @@ public class WaveFunctionCollapse : MonoBehaviour
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
                 neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
-                Debug.Log("-Y " + currentSocket + " " + currentNeighborTile.pY);
+              //  Debug.Log("-Y " + currentSocket + " " + currentNeighborTile.pY);
             }
         }
-        Debug.Log("---");
+       // Debug.Log("---");
     }
 
     public bool ContainsOnlyDigitCheck(string s)

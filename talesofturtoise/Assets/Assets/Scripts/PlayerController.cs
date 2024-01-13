@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
 
     private float speed = 3f;
-    private float rotationSpeed = 3f;
 
     private Rigidbody rb;
 

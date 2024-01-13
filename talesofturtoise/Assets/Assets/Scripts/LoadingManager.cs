@@ -10,17 +10,14 @@ public class LoadingManager : MonoBehaviour
     public Material skybox;
 
     public GameObject loadingObj;
-    int loadingInt = 12;
     //ggf wieder -7
     int positionOfZ = -8;
     GameObject currentPart;
     public GameObject loaderParent;
-    int i = 0;
 
     public GameObject turtle;
     float speed = 0.3f;
     public int placeTime = 3;
-    bool spawning;
     float timer;
 
     bool levelLoaded = false;
@@ -30,7 +27,7 @@ public class LoadingManager : MonoBehaviour
         SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
         RenderSettings.skybox = skybox;
         timer = 3;
-        Debug.Log("timer " + timer);
+      //  Debug.Log("timer " + timer);
     }
 
     private void Update()
