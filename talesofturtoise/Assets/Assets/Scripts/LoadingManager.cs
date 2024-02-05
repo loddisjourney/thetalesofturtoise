@@ -13,10 +13,9 @@ public class LoadingManager : MonoBehaviour
      * 
      * Im Hintergrund, da die Kamera das neue Level noch nicht "sieht", wird das neue Level addaptiv geladen.
      * 
-     * Wahrend das neue LEvel laed lauefrt die Schildkroete entlng eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
+     * Wahrend das neue Level laed laueft die Schildkroete entlang eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
      * 
-     * Problem: Wave Function Collapse laedt schneller als bedacht, daher wird der Timer nur einmal ausgefuehrt. Es muessten noch weitere Tests gemacht werden, wenn die Wave Function Collapse vollstaendig implementiert ist. 
-     * Ansonsten koennte es einen Standardpfad geben der immer gleich lang ist. Dies wuerde die Komplexitaet der Farbanederung vermutlich reduzieren.
+     * Wenn die Wave Function Collapse in einen kritischen Zustand kommt, wird die Szene erneut geladen
      * *
      */
 
