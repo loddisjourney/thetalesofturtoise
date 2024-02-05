@@ -73,6 +73,10 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private GameObject mapParent;
 
+    //Wird ggf. spaeter fuer die Verbreitung der Regeln verwendet
+    //public int x;
+    //public int y;
+    //public int z;
 
 
     private void Awake()
