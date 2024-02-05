@@ -7,13 +7,25 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class Cell : MonoBehaviour
 {
+    /*
+     * Grid Zelle, welche es mit der Wave Function Collapse zu fuellen gilt
+     * 
+     * Entropy ist dér Wert des errechneten Lowest Entropy
+     * 
+     * Liste der möglichen Tile besteht aus Array, welches automatisch alle Tiles aus einem Ordner liest, und einer Liste, welche dann vom Array gefuellt wird.
+     * Sobald das Array oder die Liste vom Code angesprochen wird, wird es mit einem Getter initialisiert -> da es erst zur Runtime aus dem Ordner gefuellt wird.
+     * Der urspruengliche Name ValidNeighbor ist unguenstig gewaehlt (waehrend des Implmentieren hat sich die Aufgabe veraendert,und es waere besser es nochmal in Ruhe im gesammten Code
+     * 
+     * *
+     */
+    
     public float entropy;
 
     //Sammle alle Valid Neighbors aus dem Ressource Ordner  und erstelle eine Liste daraus
     /*
      * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
     */
-    private TileData[] _validTiles; //[HideInInspector]
+    private TileData[] _validTiles;
 
     private TileData[] validTiles
     {
@@ -52,8 +64,6 @@ public class Cell : MonoBehaviour
     public bool collapsed = false;
     public bool isNeighbor = false;
 
-    public bool newCheck;
-
     [SerializeField] private GameObject mapParent;
 
 
@@ -69,10 +79,6 @@ public class Cell : MonoBehaviour
     }
     private void Update()
     {
-        //if(collapsed&&newCheck)
-        //{
-        //    CheckNewValidTiles();
-        //}
         if (collapsed) isNeighbor = false;
         if(isNeighbor)
         {
@@ -193,14 +199,5 @@ public class Cell : MonoBehaviour
        
     }
 
-    //public void CheckNewValidTiles()
-    //{
-    //    //only if collapsed it should to this
-    //    //check ob das gew?hlte tile an den nachbarn das gleiche hat wenn nicht streiche das mesh name aus dem array
-    //    if (newCheck)
-    //    {
-    //        newCheck = false;
-    //    }
-    //}
 
 }
