@@ -10,6 +10,9 @@ public class Cell : MonoBehaviour
     public float entropy;
 
     //Sammle alle Valid Neighbors aus dem Ressource Ordner  und erstelle eine Liste daraus
+    /*
+     * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
+    */
     private TileData[] _validTiles; //[HideInInspector]
 
     private TileData[] validTiles
@@ -18,7 +21,7 @@ public class Cell : MonoBehaviour
         {
             if (_validTiles == null)
             {
-                _validTiles = Resources.LoadAll<TileData>("Test2");
+                _validTiles = Resources.LoadAll<TileData>("Test");
                 
             }
             return _validTiles;
@@ -53,9 +56,7 @@ public class Cell : MonoBehaviour
 
     [SerializeField] private GameObject mapParent;
 
-    /*
-     * Load items from folder https://discussions.unity.com/t/add-prefabs-from-a-folder-to-array-as-gameobject/218233 27.12.2023
-     */
+
 
     private void Awake()
     {
@@ -132,33 +133,11 @@ public class Cell : MonoBehaviour
             
             int randTile = UnityEngine.Random.Range(0, tilesTicketList.Count); // statt valid neighbor
             
-            //Get the rotation of the tile => muss nochmal verbessert werden indem die enums integer zugeweisen werden und dann statt verzweigung direkt in das instantiate (int)rotation aufgerufen wird; Problem: 200x neu rot setzen https://discussions.unity.com/t/use-an-integer-as-an-enum/63612/2
-            //add new enum und l?sche das andere am ende der aufgabe... falls dadurch alle tile infos raus gehen
-            int rot = 0;
-            if(tilesTicketList[randTile].rotation == TileData.Rotation.r0)
-            {
-                rot = 0;
-            }
-            else if(tilesTicketList[randTile].rotation == TileData.Rotation.r90)
-            {
-                rot = 90;
-            }
-            else if (tilesTicketList[randTile].rotation == TileData.Rotation.r180)
-            {
-                rot = 180;
-            }
-            else if (tilesTicketList[randTile].rotation == TileData.Rotation.r270)
-            {
-                rot = 270;
-            }
-            
             //Place random Tile at this Cells Position
             GameObject chosenTile = tilesTicketList[randTile].meshObj;
             GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
-            //GameObject child = parentTile.transform.GetChild(0).gameObject;
-            //child.transform.rotation = Quaternion.Euler(0, rot, 0);
-            //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0,90,0); 
-            //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
+            GameObject child = parentTile.transform.GetChild(0).gameObject;
+            child.transform.rotation = Quaternion.Euler(0, (int)tilesTicketList[randTile].tileRotation, 0);
             //Speichere den gew?hlten Index
             parentTile.transform.parent = mapParent.transform;
             collapsedTile = randTile;
@@ -201,32 +180,14 @@ public class Cell : MonoBehaviour
                 collapsedTile = i;
             }
         }
-        int rot = 0;
-        if (tilesTicketList[grasTile].rotation == TileData.Rotation.r0)
-        {
-            rot = 0;
-        }
-        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r90)
-        {
-            rot = 90;
-        }
-        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r180)
-        {
-            rot = 180;
-        }
-        else if (tilesTicketList[grasTile].rotation == TileData.Rotation.r270)
-        {
-            rot = 270;
-        }
+
         
         //Place random Tile at this Cells Position
         GameObject chosenTile = tilesTicketList[grasTile].meshObj;
         GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
-        //GameObject child = parentTile.transform.GetChild(0).gameObject;
-        //child.transform.rotation = Quaternion.Euler(0, rot, 0);
-        //if (child.transform.rotation.eulerAngles.y == -90) child.transform.eulerAngles = new Vector3(0, 90, 0);
-        //else if (child.transform.rotation.eulerAngles.y == -270) child.transform.eulerAngles = new Vector3(0, 270, 0);
-        //Speichere den gew?hlten Index
+        GameObject child = parentTile.transform.GetChild(0).gameObject;
+        child.transform.rotation = Quaternion.Euler(0, (int)tilesTicketList[grasTile].rotation, 0);
+        //Speichere den gewaehlten Index
         parentTile.transform.parent = mapParent.transform;
         collapsed = true;
        

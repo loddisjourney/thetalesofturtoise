@@ -14,6 +14,7 @@ public class TileData : ScriptableObject
     [SerializeField] string tileName; //prototyp_...
     public GameObject meshObj;
     public Rotation rotation;
+    public TileRotation tileRotation;
     public int weight;
 
     [Header("Sockets")]
