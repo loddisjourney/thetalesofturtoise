@@ -16,7 +16,7 @@ MonoBehaviour:
   meshObj: {fileID: 7479874445209422668, guid: 72560681c65508c4a82d0b5cc85659fe, type: 3}
   rotation: 3
   tileRotation: 270
-  weight: 1
+  weight: 2
   pX: 2f
   nX: 2
   pZ: 1s

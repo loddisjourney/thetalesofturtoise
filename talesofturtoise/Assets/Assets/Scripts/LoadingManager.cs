@@ -50,6 +50,7 @@ public class LoadingManager : MonoBehaviour
 
     void Start()
     {
+        levelLoaded = false;
         SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
         RenderSettings.skybox = skybox;
         timer = 3;

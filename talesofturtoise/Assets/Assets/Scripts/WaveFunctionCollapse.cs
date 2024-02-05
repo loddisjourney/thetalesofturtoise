@@ -14,9 +14,9 @@ public class WaveFunctionCollapse : MonoBehaviour
     public GameManager gameManager;
 
     [Header("Level Info")]
-    private int width = 15; //z
+    private int width = 10; //z
     private int height = 1; //y
-    private int length = 15; //x
+    private int length = 10; //x
 
     private GameObject[,,] gridArray;
 
@@ -50,7 +50,7 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     //Iteration Controller zum Platzieren -> ohne dass es alles in einem Frame generiert wird
     public bool iterationDone;
-    float timer = 0.1f;
+    float timer = 0.01f;
     public void RestartGame()
     {
         SceneManager.LoadScene("PlayerHome");
@@ -59,6 +59,7 @@ public class WaveFunctionCollapse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         gridArray = new GameObject[length, height, width];
         GenerateGrid();
     }
@@ -146,7 +147,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         //Beginne die Wave Function Collapse
         // ManageCollapse();
         iterationDone = true;
-        timer = 0.1f;
+        timer = 0.01f;
     }
 
     /*
@@ -371,7 +372,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             
         }
         //Fuehre die Wave Function Collpase fort
-        timer = 0.1f;
+        timer = 0.01f;
         iterationDone = true;
         //ManageCollapse();
     }
