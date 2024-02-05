@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class TurtleManage : MonoBehaviour
 {
+    /*
+     *  Prototyp fuer das Management der Schildkroete zum Oeffnen der Ladeszene.
+     * 
+     */
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,16 +22,7 @@ public class TurtleManage : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             SceneManager.LoadScene("LoadingLevel");
-            Debug.Log("new");
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            SceneManager.LoadScene("LoadingLevel");
-            Debug.Log("LoadLevel");
-        }
-    }
 }

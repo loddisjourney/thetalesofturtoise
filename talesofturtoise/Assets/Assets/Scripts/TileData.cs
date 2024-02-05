@@ -7,17 +7,17 @@ public class TileData : ScriptableObject
 {
 
     /*
-     * BaseTile Data as a preset for all Tile Assets to simply create mutliple Tiles fast
-     * Scriptable Object Information found on https://gamedevbeginner.com/scriptable-objects-in-unity/ 27.12.2023
+     * Basis fuer die Daten der Tiles als Schablone fuer alle Tiles
+     * Scriptable Object Infos und grundlegende Verwendung, aufgerufen am 27.12.2023 unter: https://gamedevbeginner.com/scriptable-objects-in-unity/ 
      */
 
-    [SerializeField] string tileName; //prototype
+    [SerializeField] string tileName; //prototyp_...
     public GameObject meshObj;
-    public Rotation rotation; //orientation of the socket
-    public int weight; //5,4,3,2,1
+    public Rotation rotation;
+    public int weight;
 
     [Header("Sockets")]
-    //Neighbor Sockets
+    //Neighbor Sockets analog zu den festgelegten Regeln
     public string pX; //front
     public string nX; //back
     public string pZ; //right
@@ -26,7 +26,7 @@ public class TileData : ScriptableObject
     public string nY; //bottom
 
     /*
-     * ^Neighbor List
+     * Regelliste und Socket Definition
      * -1 invalid = nothing
      * 0s socket type + symmetric
      * 1 or 1f socket type + form in flipped or not flipped ( 1f with valid neighbor of 1 and 1 with valid neighbor of 1f)
@@ -64,33 +64,6 @@ public class TileData : ScriptableObject
     * 
     */
 
-
-    //// THIS WILL MAYBE BE REMOVED
-    //[Header("Neighbors")]
-    ////Maybe a List to specifiy valid neighbors 
-    //public List<string[]> valid_neighbors; //[...] 
-
-    //public string[] pX_Neighbor;
-    //public string[] nX_Neighbor;
-    //public string[] pZ_Neighbor;
-    //public string[] nZ_Neighbor;
-    //public string[] pY_Neighbor;
-    //public string[] nY_Neighbor;
-
-
-    //private void Awake()
-    //{
-    //    valid_neighbors = new List<string[]>
-    //    {
-    //        pX_Neighbor,
-    //        nX_Neighbor,
-    //        pZ_Neighbor,
-    //        nZ_Neighbor,
-    //        pY_Neighbor,
-    //        nY_Neighbor
-    //    };
-    //}
-
     public enum Rotation
     {
         r0,
@@ -99,6 +72,7 @@ public class TileData : ScriptableObject
         r270
     }
 
+    //korrigiertes Enum, um Integer zu erhalten
     public enum TileRotation
     {
         r0 = 0,
