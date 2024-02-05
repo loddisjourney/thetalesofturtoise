@@ -356,9 +356,9 @@ public class WaveFunctionCollapse : MonoBehaviour
            
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets         
-            for (int xA = 0; xA < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborPosX.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborPosX.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.nX; //Tile Data Object aus der Liste und von dieser Tile Data der Negativ X Nachbar als gegen Socket zum Current von Positiv
 
                 //check if its none flipped => only digits 
@@ -422,7 +422,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                         //ungleich
                         invalidNeighborList.Add(currentNeighborTile);
                         Debug.Log("ungleich");
-                        //neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        //neighborPosX.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                     }
                 }
 
@@ -431,11 +431,11 @@ public class WaveFunctionCollapse : MonoBehaviour
            // Debug.Log("l?schende Nachbarn " + invalidNeighborList.Count);
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborPosX.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
                // Debug.Log("+X " + currentSocket + " " + currentNeighborTile.nX + " ");
             }
-           // Debug.Log("?brig gebliebne Nachbarn" + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count);
-            //for (int i = 0; i < neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+X " + currentSocket + " " + neighborPosX.gameObject.GetComponent<Cell>().validNeighbors[i].nX ); }
+           // Debug.Log("?brig gebliebne Nachbarn" + neighborPosX.gameObject.GetComponent<Cell>().validTilesList.Count);
+            //for (int i = 0; i < neighborPosX.gameObject.GetComponent<Cell>().validTilesList.Count; i++) { Debug.Log("+X " + currentSocket + " " + neighborPosX.gameObject.GetComponent<Cell>().validTilesList[i].nX ); }
         }
       //  Debug.Log("---");
     }
@@ -492,7 +492,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                 //ungleich
                 return false;
               //  Debug.Log("ungleich");
-                //neighborPosX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                //neighborPosX.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
             }       
         return false;
     }
@@ -517,9 +517,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
-            for (int xA = 0; xA < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborNegX.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborNegX.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.pX;
 
 
@@ -578,7 +578,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     else
                     {
                         //ungleich
-                        //neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        //neighborNegX.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                         invalidNeighborList.Add(currentNeighborTile);
                     }
                 }
@@ -587,11 +587,11 @@ public class WaveFunctionCollapse : MonoBehaviour
 
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborNegX.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
                // Debug.Log("-X " + currentSocket + " " + currentNeighborTile.pX);
             }
            // Debug.Log("?brig gebliebne Nachbarn--------------------");
-         //   for (int i = 0; i < neighborNegX.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-X " + currentSocket + " " + neighborNegX.gameObject.GetComponent<Cell>().validNeighbors[i].pX); }
+         //   for (int i = 0; i < neighborNegX.gameObject.GetComponent<Cell>().validTilesList.Count; i++) { Debug.Log("-X " + currentSocket + " " + neighborNegX.gameObject.GetComponent<Cell>().validTilesList[i].pX); }
         }
        // Debug.Log("---");
     }
@@ -616,9 +616,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
-            for (int xA = 0; xA < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborPosZ.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborPosZ.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.nZ;
 
                 bool sym = VegleichSockets(currentSocket, neighborSocket);
@@ -672,7 +672,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     else
                     {
                         //ungleich
-                        //neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        //neighborPosZ.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                         invalidNeighborList.Add(currentNeighborTile);
                     }
                 }
@@ -680,11 +680,11 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborPosZ.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
                // Debug.Log("+Z " + currentSocket + " " + currentNeighborTile.nZ);
             }
            // Debug.Log("?brig gebliebne Nachbarn--------------------");
-           // for (int i = 0; i < neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("+Z " + currentSocket + " " + neighborPosZ.gameObject.GetComponent<Cell>().validNeighbors[i].nZ); }
+           // for (int i = 0; i < neighborPosZ.gameObject.GetComponent<Cell>().validTilesList.Count; i++) { Debug.Log("+Z " + currentSocket + " " + neighborPosZ.gameObject.GetComponent<Cell>().validTilesList[i].nZ); }
         }
        // Debug.Log("---");
     }
@@ -709,9 +709,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
-            for (int xA = 0; xA < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborNegZ.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborNegZ.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.pZ;
 
                 bool sym = VegleichSockets(currentSocket, neighborSocket);
@@ -765,7 +765,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     else
                     {
                         //ungleich
-                        // neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        // neighborNegZ.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                         invalidNeighborList.Add(currentNeighborTile);
                     }
                 }
@@ -773,11 +773,11 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborNegZ.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
                // Debug.Log("-Z " + currentSocket + " " + currentNeighborTile.pZ);
             }
          //   Debug.Log("?brig gebliebne Nachbarn--------------------");
-           // for (int i = 0; i < neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors.Count; i++) { Debug.Log("-Z " + currentSocket + " " + neighborNegZ.gameObject.GetComponent<Cell>().validNeighbors[i].pZ); }
+           // for (int i = 0; i < neighborNegZ.gameObject.GetComponent<Cell>().validTilesList.Count; i++) { Debug.Log("-Z " + currentSocket + " " + neighborNegZ.gameObject.GetComponent<Cell>().validTilesList[i].pZ); }
         }
         //Debug.Log("---");
     }
@@ -802,9 +802,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
-            for (int xA = 0; xA < neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborPosY.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborPosY.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborPosY.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.nY;
 
                 bool sym = VegleichSockets(currentSocket, neighborSocket);
@@ -860,14 +860,14 @@ public class WaveFunctionCollapse : MonoBehaviour
                     else
                     {
                         //ungleich
-                        //neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        //neighborPosY.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                         invalidNeighborList.Add(currentNeighborTile);
                     }
                 }
             }
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborPosY.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborPosY.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
                // Debug.Log("+Y " + currentSocket + " " + currentNeighborTile.nY);
             }
         }
@@ -895,9 +895,9 @@ public class WaveFunctionCollapse : MonoBehaviour
 
             //Vergleiche das PosX Socket von current mit sllen m?glichen  NegX Socket der NAchbarliste und streiche ungleiche Sockets
 
-            for (int xA = 0; xA < neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.Count; xA++)
+            for (int xA = 0; xA < neighborNegY.gameObject.GetComponent<Cell>().validTilesList.Count; xA++)
             {
-                TileData currentNeighborTile = neighborNegY.gameObject.GetComponent<Cell>().validNeighbors[xA];
+                TileData currentNeighborTile = neighborNegY.gameObject.GetComponent<Cell>().validTilesList[xA];
                 string neighborSocket = currentNeighborTile.pY;
 
                 bool sym = VegleichSockets(currentSocket, neighborSocket);
@@ -951,7 +951,7 @@ public class WaveFunctionCollapse : MonoBehaviour
                     else
                     {
                         //ungleich
-                        //neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.RemoveAt(xA);
+                        //neighborNegY.gameObject.GetComponent<Cell>().validTilesList.RemoveAt(xA);
                         invalidNeighborList.Add(currentNeighborTile);
                     }
                 }
@@ -959,7 +959,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             }
             foreach (TileData currentNeighborTile in invalidNeighborList)
             {
-                neighborNegY.gameObject.GetComponent<Cell>().validNeighbors.Remove(currentNeighborTile);
+                neighborNegY.gameObject.GetComponent<Cell>().validTilesList.Remove(currentNeighborTile);
               //  Debug.Log("-Y " + currentSocket + " " + currentNeighborTile.pY);
             }
         }

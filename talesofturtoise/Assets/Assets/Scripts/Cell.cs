@@ -14,7 +14,6 @@ public class Cell : MonoBehaviour
      * 
      * Liste der möglichen Tile besteht aus Array, welches automatisch alle Tiles aus einem Ordner liest, und einer Liste, welche dann vom Array gefuellt wird.
      * Sobald das Array oder die Liste vom Code angesprochen wird, wird es mit einem Getter initialisiert -> da es erst zur Runtime aus dem Ordner gefuellt wird.
-     * Der urspruengliche Name ValidNeighbor ist unguenstig gewaehlt (waehrend des Implmentieren hat sich die Aufgabe veraendert,und es waere besser es nochmal in Ruhe im gesammten Code
      * 
      * *
      */
@@ -39,20 +38,20 @@ public class Cell : MonoBehaviour
             return _validTiles;
         }
     }
-    private List<TileData> _validNeighbors;
-    public List<TileData> validNeighbors
+    private List<TileData> _validTilesList;
+    public List<TileData> validTilesList
     {
         get
         {
-            if (_validNeighbors == null)
+            if (_validTilesList == null)
             {
-                _validNeighbors = new List<TileData>();
+                _validTilesList = new List<TileData>();
                 for (int i = 0; i < validTiles.Length; i++)
                 {
-                    _validNeighbors.Add(validTiles[i]);
+                    _validTilesList.Add(validTiles[i]);
                 }
             }
-            return _validNeighbors;
+            return _validTilesList;
         }
     }
     public TileData defaultTile;
@@ -105,35 +104,35 @@ public class Cell : MonoBehaviour
         entropy = 0;
         //Summe der gesammten Weights
         float totalWeight = 0;
-        for(int i = 0; i < validNeighbors.Count; i++)
+        for(int i = 0; i < validTilesList.Count; i++)
         {
-            totalWeight += validNeighbors[i].weight;
+            totalWeight += validTilesList[i].weight;
         }
 
         //Die Entropy ist die Summe der Wahrscheinlichkeit der m?glichen Tiles multipliziert mit dem Logarithmus der ahrscheinlichkeit des Tiles, das Ergebnis wird negiert
         //Die Wahrscheinlihckeit ist das Weight des aktuellen m?glichen Tiles durch die addierte gesammten Weightrs alller m?glichen Weights
-        for (int i = 0; i < validNeighbors.Count; i++)
+        for (int i = 0; i < validTilesList.Count; i++)
         {
-            float wahrscheinlichkeit = validNeighbors[i].weight / totalWeight;
+            float wahrscheinlichkeit = validTilesList[i].weight / totalWeight;
             entropy += wahrscheinlichkeit * Mathf.Log(wahrscheinlichkeit, 2);
         }
 
-        //Debug.Log("Result of Entropy "+ -entropy + "Count of valid neighbors" + validNeighbors.Count);   
+        //Debug.Log("Result of Entropy "+ -entropy + "Count of valid neighbors" + validTilesList.Count);   
         return -entropy; 
     }
 
     public void ChooseRandomTile()
     {
         //Choose a random Tile if its not empty
-        if(validNeighbors.Count != 0)
+        if(validTilesList.Count != 0)
         {
             //use the weight to choose a tile based on it --> ggf bessere und effizientere art
-            for(int i = 0; i < validNeighbors.Count; i++)
+            for(int i = 0; i < validTilesList.Count; i++)
             {
-                int probaility = validNeighbors[i].weight;
+                int probaility = validTilesList[i].weight;
                 for(int j = 0; j < probaility; j++)
                 {
-                    tilesTicketList.Add(validNeighbors[i]);
+                    tilesTicketList.Add(validTilesList[i]);
                 }
             }
             
@@ -154,7 +153,7 @@ public class Cell : MonoBehaviour
             Instantiate(defaultTile.meshObj, this.transform.position, Quaternion.identity);
 
             //collapsedTile = 0;
-            //validNeighbors.Add(defaultTile);
+            //validTilesList.Add(defaultTile);
         }
         
         //Set it to collapsed
@@ -166,12 +165,12 @@ public class Cell : MonoBehaviour
     {
 
         //use the weight to choose a tile based on it --> ggf bessere und effizientere art --> erster aufruf zum initialisieren fuer nachbar abfrage
-        for (int i = 0; i < validNeighbors.Count; i++)
+        for (int i = 0; i < validTilesList.Count; i++)
         {
-            int probaility = validNeighbors[i].weight;
+            int probaility = validTilesList[i].weight;
             for (int j = 0; j < probaility; j++)
             {
-                tilesTicketList.Add(validNeighbors[i]);
+                tilesTicketList.Add(validTilesList[i]);
             }
         }
 
