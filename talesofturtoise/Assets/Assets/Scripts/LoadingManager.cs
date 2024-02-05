@@ -38,6 +38,7 @@ public class LoadingManager : MonoBehaviour
 
     public static bool levelLoaded = false;
     public static bool endOfLoading = false;
+    public static bool generationFailed = false;
 
     bool placedEnd = false;
 
@@ -51,6 +52,7 @@ public class LoadingManager : MonoBehaviour
     void Start()
     {
         levelLoaded = false;
+        generationFailed = false;
         SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
         RenderSettings.skybox = skybox;
         timer = 3;
@@ -80,6 +82,16 @@ public class LoadingManager : MonoBehaviour
             }
             
         }
+
+        //Error Handling Restart Generation
+        if(generationFailed)
+        {
+            SceneManager.UnloadSceneAsync("GeneratedLevel");
+            generationFailed = false;
+            if (SceneManager.GetSceneByName("GeneratedLevel").isLoaded == false) SceneManager.LoadScene("GeneratedLevel", LoadSceneMode.Additive);
+        }
+
+        
         
        // if(endOfLoading== true)
        // {

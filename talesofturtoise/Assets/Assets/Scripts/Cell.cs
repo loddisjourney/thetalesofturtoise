@@ -151,7 +151,7 @@ public class Cell : MonoBehaviour
      * Wenn die Liste der moeglichen Tiles leer ist, beduetet es kommt zu einem kritischen Zustand. Hier muesste ein konkretes Error Handling implementiert werden. Vorerst wird dies durch ein Default Luft Tile geloest.
      * *
      */
-    public void ChooseRandomTile()
+    public bool ChooseRandomTile()
     {
         //Ist die Liste nicht leer soll ein Tile zufaellig gewaehlt werden
         if(validTilesList.Count != 0)
@@ -185,12 +185,13 @@ public class Cell : MonoBehaviour
             Instantiate(defaultTile.meshObj, this.transform.position, Quaternion.identity);
 
             //Liste muesste ein neues Tile erhalten um in der Nachbarpruefung ein Tile zu finden, wobei hier eine  Loesung implementiert werden muesste, dass -1 fuer alle horizontalen NAchbarn akzeptiert wird
-            //collapsedTile = 0;
-            //validTilesList.Add(defaultTile);
+            return false;
         }
         
         //Setze die Zelle auf besetzt
         collapsed = true;
+
+        return true;
         
     }
 

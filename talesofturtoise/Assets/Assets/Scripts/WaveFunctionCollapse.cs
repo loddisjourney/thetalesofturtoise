@@ -14,9 +14,9 @@ public class WaveFunctionCollapse : MonoBehaviour
     public GameManager gameManager;
 
     [Header("Level Info")]
-    private int width = 10; //z
+    private int width = 20; //z
     private int height = 1; //y
-    private int length = 10; //x
+    private int length = 20; //x
 
     private GameObject[,,] gridArray;
 
@@ -90,6 +90,7 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         else
         {
+            //Platziere alle 0.01 Sekunden ein Tile bzw. Starte eine neue Iteration
             if (iterationDone)
             {
                 timer -= Time.deltaTime;
@@ -256,11 +257,21 @@ public class WaveFunctionCollapse : MonoBehaviour
     public void PlaceTile(int randIndex)
     {
         //Rufe die Cell Methode zum Platzieren des naechsten Tiles auf
-        lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
+        bool successfullPlacement = lowestGridCellList[randIndex].gameObject.GetComponent<Cell>().ChooseRandomTile();
+        //BAsic Error Handling bei kritischen Fall
+        if (successfullPlacement == false)
+        {
+            GenereationFailed();
+        }
         //Danach wird diese Zelle zur besetzte Zellen Liste hinzugefuegt
         collapsedGridCellList.Add(lowestGridCellList[randIndex]);
         //Nachdem Platzieren muss die Info an die Nachbarn weiter gegeben bzw. die Regeln angewendet werden
         CheckNeighbors();
+    }
+
+    public void GenereationFailed()
+    {
+        LoadingManager.generationFailed = true;
     }
 
    /*
