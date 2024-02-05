@@ -45,6 +45,13 @@ public class WaveFunctionCollapse : MonoBehaviour
     public GameObject _player;
     public GameObject _camera;
 
+    //Nur fuer den Protoyp
+    public GameObject restartButton;
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("PlayerHome");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,6 +77,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //levelGenerated = true;
             _camera.SetActive(true);
             _player.SetActive(true);
+            restartButton.SetActive(true);
             levelGenerated = false;
             RenderSettings.skybox = skybox1;
         }
