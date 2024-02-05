@@ -14,9 +14,9 @@ public class WaveFunctionCollapse : MonoBehaviour
     public GameManager gameManager;
 
     [Header("Level Info")]
-    private int width = 10; //z
+    private int width = 15; //z
     private int height = 1; //y
-    private int length = 10; //x
+    private int length = 15; //x
 
     private GameObject[,,] gridArray;
 
@@ -47,6 +47,10 @@ public class WaveFunctionCollapse : MonoBehaviour
 
     //Nur fuer den Protoyp
     public GameObject restartButton;
+
+    //Iteration Controller zum Platzieren -> ohne dass es alles in einem Frame generiert wird
+    public bool iterationDone;
+    float timer = 0.1f;
     public void RestartGame()
     {
         SceneManager.LoadScene("PlayerHome");
@@ -69,6 +73,8 @@ public class WaveFunctionCollapse : MonoBehaviour
         }
         */
 
+
+
         // Unload Loading Scene
         if (levelGenerated)
         {
@@ -80,6 +86,19 @@ public class WaveFunctionCollapse : MonoBehaviour
             restartButton.SetActive(true);
             levelGenerated = false;
             RenderSettings.skybox = skybox1;
+        }
+        else
+        {
+            if (iterationDone)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0.0f)
+                {
+                    iterationDone = false;
+                    ManageCollapse();
+                }
+            }
+           
         }
     }
 
@@ -123,9 +142,11 @@ public class WaveFunctionCollapse : MonoBehaviour
                 currentWaterElement.transform.parent = waterParent.transform;
             }
         }
-        
+
         //Beginne die Wave Function Collapse
-        ManageCollapse();
+        // ManageCollapse();
+        iterationDone = true;
+        timer = 0.1f;
     }
 
     /*
@@ -350,7 +371,9 @@ public class WaveFunctionCollapse : MonoBehaviour
             
         }
         //Fuehre die Wave Function Collpase fort
-        ManageCollapse();
+        timer = 0.1f;
+        iterationDone = true;
+        //ManageCollapse();
     }
 
     /*
