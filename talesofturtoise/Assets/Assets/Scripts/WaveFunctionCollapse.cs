@@ -1,9 +1,5 @@
-using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -235,7 +231,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //vielleicht hat er wegen der rotation probleme -> test die rotation zu setzen
             //Nachbar Pos X----------------------------------------------------------------------------------------------- Pos X == Neg X?
             try { 
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pX;
                 Vector3 neighborFrontPos = currentGridCell.transform.position + new Vector3(1, 0, 0);
               //  n = gridArray[x + 1, y, z];
                //Debug.Log(currentGridCell.transform.position +"-----");
@@ -250,7 +246,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Nachbar Neg X ----------------------------------------------------------------------------------------------- Neg X == Pos X?
             try 
             {
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nX;
                 Vector3 neighborBackPos = currentGridCell.transform.position + new Vector3(-1, 0, 0);
 
 
@@ -265,7 +261,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Nachbar Pos Z ----------------------------------------------------------------------------------------------- Pos Z == Neg Z?
             try
             {
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pZ;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pZ;
                 Vector3 neighborRightPos = currentGridCell.transform.position + new Vector3(0, 0, 1);
 
                 PosZNeighbor(currentSocket, neighborRightPos);
@@ -280,7 +276,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Nachbar Neg Z ----------------------------------------------------------------------------------------------- Neg Z == Pos Z?
             try
             {
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nZ;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nZ;
                 Vector3 neighborLeftPos = currentGridCell.transform.position + new Vector3(0, 0, -1);
 
                 NegZNeighbor(currentSocket, neighborLeftPos);
@@ -295,7 +291,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Nachbar Pos Y ----------------------------------------------------------------------------------------------- Pos Y == Neg Y?
             try
             {
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pY;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].pY;
                 Vector3 neighborTopPos = currentGridCell.transform.position + new Vector3(0, 1, 0);
 
                 PosYNeighbor(currentSocket, neighborTopPos);
@@ -309,7 +305,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Nachbar Neg Y  ----------------------------------------------------------------------------------------------- Neg Y == Pos Y?
             try
             {
-                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesTicketList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nY;
+                currentSocket = currentGridCell.gameObject.GetComponent<Cell>().tilesProbabilityList[currentGridCell.gameObject.GetComponent<Cell>().collapsedTile].nY;
                 Vector3 neighborBottomPos = currentGridCell.transform.position + new Vector3(0, -1, 0);
 
                 NegYNeighbor(currentSocket, neighborBottomPos);

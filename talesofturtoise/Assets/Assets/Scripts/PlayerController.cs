@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {
-
-    //This Script is based on an arcticle of IronEqual, 04.08.2017 https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
-    // Camera Settings https://www.youtube.com/watch?v=Jh6JBpKca_k
-
+    /*
+     * Simpler Player Protoyp - Top Down Camera
+     * Player Input basiert auf den Artikel von IronEqual, aufgerufen am 7.1.2024 unter https://medium.com/ironequal/unity-character-controller-vs-rigidbody-a1e243591483
+     * Player Kamera Setting basierend auf Erklaerung aus dem YouTube Video https://www.youtube.com/watch?v=Jh6JBpKca_k
+     * **/
 
     private float speed = 3f;
 
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
         _inputs.z = UnityEngine.Input.GetAxis("Vertical");
         if (_inputs != Vector3.zero)
             transform.forward = _inputs;
-
     }
 
     void FixedUpdate()

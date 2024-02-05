@@ -1,37 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class LoadingManager : MonoBehaviour
 {
+    /*
+     * Loading Manager
+     * Die Idee ist, dass eine andere art von LAdebalken visualisiert werden soll. Waehrend die Wave Function Collpase generiert, 
+     * soll die Schildkroete den Weg dzum neuen Biom ablaufen. Die Umgebnung soll sich dabei stetig zum neuen Biom umwandeln in farbe 
+     * und ggf. Assetplatzierung je nach prozentualen Fortschritt der Wave Function Collapse ueberblenden.
+     * 
+     * Im Hintergrund, da die Kamera das neue Level noch nicht "sieht", wird das neue Level addaptiv geladen.
+     * 
+     * Wahrend das neue LEvel laed lauefrt die Schildkroete entlng eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
+     * 
+     * Problem: Wave Function Collapse laedt schneller als bedacht, daher wird der Timer nur einmal ausgefuehrt. Es muessten noch weitere Tests gemacht werden, wenn die Wave Function Collapse vollstaendig implementiert ist. 
+     * Ansonsten koennte es einen Standardpfad geben der immer gleich lang ist. Dies wuerde die Komplexitaet der Farbanederung vermutlich reduzieren.
+     * *
+     */
+
+    
     public Material skybox;
 
     public GameObject loadingObj;
     public GameObject endObj;
-    //ggf wieder -7
+
     int positionOfZ = -8;
     GameObject currentPart;
     public GameObject loaderParent;
 
     public GameObject turtle;
     float speed = 0.3f;
+
     public int placeTime = 3;
     float timer;
-    public static bool levelLoaded = false;
 
+    public static bool levelLoaded = false;
     public static bool endOfLoading = false;
 
     bool placedEnd = false;
 
     //Color
-
     public GameObject[] lineObjs;
-    private Material lineMaterial;
-
     public Color startColor;
     public Color endColor;
 
@@ -46,9 +57,10 @@ public class LoadingManager : MonoBehaviour
 
     private void Update()
     {
-
+        //Schildkroete laeuft entlang des Pfads
         turtle.transform.Translate(Vector3.left * speed * Time.deltaTime);
 
+        //Solange das Level nicht fertig geladen ist, soll immer nach 3 Sekunden bzw. einem timer der Weg verlaengert werden
         if(!levelLoaded )
         {
             timer -= Time.deltaTime;
@@ -60,6 +72,7 @@ public class LoadingManager : MonoBehaviour
         }
         else
         {
+            //Ist das Level geladen und das Endteil noch nicht platziert, wird es platziert.
             if(placedEnd== false)
             {
                 PlaceLoadingEnd();
@@ -71,10 +84,7 @@ public class LoadingManager : MonoBehaviour
        // {
             //Scene scene = SceneManager.GetActiveScene();
             //Debug.Log("Active Scene is '" + scene.name + "'.");
-       // }
-
-
-        
+       // }    
     }
 
     public void PlaceLoadingEnd()
@@ -92,6 +102,10 @@ public class LoadingManager : MonoBehaviour
         timer = 3;
     }
 
+    /*
+     * Erster Ansatz fuer die Farblende, diese ist noch nicht korrekt und aucherstmal nur fuer die erste Anzahl von lineObjekten ausgelegt. Es wird bishe rnur getestet, ob die Lerp Funktion eine moegliche Loesung waere. Zeitlich konnte es nicht zu Ende getestet werden
+     * Spaeter soll sie nur die Farbe von dem neuen Line Objekt aendern und die Groeﬂe des Lerp dynamisch aendern.
+     * **/
     public void ChnageMaterialStep()
     {
         lineObjs = GameObject.FindGameObjectsWithTag("LoadingPath");
@@ -113,6 +127,4 @@ public class LoadingManager : MonoBehaviour
         }
     }
 
-
-  
 }
