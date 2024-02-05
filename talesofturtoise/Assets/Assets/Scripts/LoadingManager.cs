@@ -15,7 +15,7 @@ public class LoadingManager : MonoBehaviour
      * 
      * Wahrend das neue Level laed laueft die Schildkroete entlang eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
      * 
-     * Wenn die Wave Function Collapse in einen kritischen Zustand kommt, wird die Szene erneut geladen
+     * Wenn die Wave Function Collapse in einen kritischen Zustand kommt, wird die Szene erneut geladen.
      * *
      */
 

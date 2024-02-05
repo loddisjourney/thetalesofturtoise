@@ -24,14 +24,14 @@ public class WaveFunctionCollapse : MonoBehaviour
     public Cell cell;
     [SerializeField] GameObject gridCell;
     private GameObject currentCell;
-    public List<GameObject> gridList; // liste der grid objekte, um auf die cell infos zu kommen
-    public List<GameObject> validGridCellList; //not collapsed Grid Cells
+    public List<GameObject> gridList; // liste der grid objekte, um auf die Cellinfos zu kommen
+    public List<GameObject> validGridCellList; //Liste mit nicht besetzten Cells
     public List<GameObject> neighborsList; //Liste der gefunden Nachbarn
     public List<GameObject> lowestGridCellList; //Liste mit dem lowest Entropy
     public List<GameObject> collapsedGridCellList; //Liste der besetzten Cells
 
     [Header ("Ground Generation")]
-    //This will be replaced by the worlds atmosphere
+    //Spaeter kommen hier konkrete LEvelrahmen
     [SerializeField] private GameObject waterTile;
     [SerializeField] private GameObject waterParent;
     private GameObject currentWaterElement;
