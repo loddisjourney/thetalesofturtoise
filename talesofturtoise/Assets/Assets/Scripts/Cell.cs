@@ -217,7 +217,7 @@ public class Cell : MonoBehaviour
         int grasTile = 0;
         for(int i = 0; i < tilesProbabilityList.Count; i++)
         {
-            if(tilesProbabilityList[i].meshObj.name =="grass_base")
+            if(tilesProbabilityList[i].meshObj.name =="ground_base")
             {
                 grasTile = i;
                 collapsedTile = i;
@@ -229,7 +229,7 @@ public class Cell : MonoBehaviour
         GameObject chosenTile = tilesProbabilityList[grasTile].meshObj;
         GameObject parentTile = Instantiate(chosenTile, this.transform.position, Quaternion.identity);
         GameObject child = parentTile.transform.GetChild(0).gameObject;
-        child.transform.rotation = Quaternion.Euler(0, (int)tilesProbabilityList[grasTile].rotation, 0);
+        child.transform.rotation = Quaternion.Euler(0, (int)tilesProbabilityList[grasTile].tileRotation, 0);
         //Platziere das neue Tile unter die Level Map
         parentTile.transform.parent = mapParent.transform;
         //Setze die Zelle auf besetzt

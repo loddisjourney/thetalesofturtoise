@@ -15,6 +15,7 @@ MonoBehaviour:
   tileName: proto_192
   meshObj: {fileID: 4468612341109049272, guid: 0dd01de8b272f6a4f93d5be763ea85f9, type: 3}
   rotation: 3
+  tileRotation: 270
   weight: 1
   pX: 17f
   nX: 16
@@ -22,9 +23,3 @@ MonoBehaviour:
   nZ: 13s
   pY: -1
   nY: -1
-  pX_Neighbor: []
-  nX_Neighbor: []
-  pZ_Neighbor: []
-  nZ_Neighbor: []
-  pY_Neighbor: []
-  nY_Neighbor: []
