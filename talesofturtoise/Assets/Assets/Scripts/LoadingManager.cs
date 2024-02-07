@@ -46,7 +46,8 @@ public class LoadingManager : MonoBehaviour
     public Color startColor;
     public Color endColor;
 
-
+    //Skip Button
+    public GameObject skipBtn;
 
     void Start()
     {
@@ -74,6 +75,8 @@ public class LoadingManager : MonoBehaviour
         }
         else
         {
+            //Dieser Teil kann ggf. ueberspruengen werden
+            skipBtn.SetActive(true);
             //Ist das Level geladen und das Endteil noch nicht platziert, wird es platziert.
             if(placedEnd== false)
             {
@@ -116,7 +119,7 @@ public class LoadingManager : MonoBehaviour
 
     /*
      * Erster Ansatz fuer die Farblende, diese ist noch nicht korrekt und aucherstmal nur fuer die erste Anzahl von lineObjekten ausgelegt. Es wird bishe rnur getestet, ob die Lerp Funktion eine moegliche Loesung waere. Zeitlich konnte es nicht zu Ende getestet werden
-     * Spaeter soll sie nur die Farbe von dem neuen Line Objekt aendern und die Groeﬂe des Lerp dynamisch aendern.
+     * Spaeter soll sie nur die Farbe von dem neuen Line Objekt aendern und die Groe?e des Lerp dynamisch aendern.
      * **/
     public void ChnageMaterialStep()
     {
@@ -137,6 +140,13 @@ public class LoadingManager : MonoBehaviour
                 }
             }
         }
+    }
+
+
+    //Skip Button
+    public void SkipScene()
+    {
+        WaveFunctionCollapse.levelGenerated = true;
     }
 
 }

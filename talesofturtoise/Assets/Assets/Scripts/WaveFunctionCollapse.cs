@@ -173,8 +173,8 @@ public class WaveFunctionCollapse : MonoBehaviour
         //Debug.Log("Count of not collapsed " +validGridCellList.Count);
 
         /*
-         * Die groeße der nicht besetzten Zellen wird geprueft.
-         * Ist sie genauso groß wie die Anzahl der Gridelemente, so wurde enoch keine Zelle gefuellt. Es wird die erste Zelle zum Fuellen ausgeweaehlt.
+         * Die groe?e der nicht besetzten Zellen wird geprueft.
+         * Ist sie genauso gro? wie die Anzahl der Gridelemente, so wurde enoch keine Zelle gefuellt. Es wird die erste Zelle zum Fuellen ausgeweaehlt.
          * Ist sie leer, so wurden alle Zellen gefuellt. Das Generieren ist beendet.
          * Andernfalls wird eine neue Zelle gewaehlt.
          * **/
@@ -410,7 +410,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborPosX.gameObject.GetComponent<Cell>().isNeighbor = true;
             
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosX Socket von der aktuellen besetzten Zelle mit allen moeglichen NegX Socket der Tile Liste vom Nachbar        
@@ -456,7 +456,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborNegX.gameObject.GetComponent<Cell>().isNeighbor = true;
 
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das NegX Socket von der aktuellen besetzten Zelle mit allen moeglichen PosX Socket der Tile Liste vom Nachbar 
@@ -502,7 +502,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborPosZ.gameObject.GetComponent<Cell>().isNeighbor = true;
 
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosZ Socket von der aktuellen besetzten Zelle mit allen moeglichen NegZ Socket der Tile Liste vom Nachbar 
@@ -548,7 +548,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborNegZ.gameObject.GetComponent<Cell>().isNeighbor = true;
 
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das NegZ Socket von der aktuellen besetzten Zelle mit allen moeglichen PosZ Socket der Tile Liste vom Nachbar 
@@ -594,7 +594,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborPosY.gameObject.GetComponent<Cell>().isNeighbor = true;
 
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das PosY Socket von der aktuellen besetzten Zelle mit allen moeglichen NegY Socket der Tile Liste vom Nachbar 
@@ -640,7 +640,7 @@ public class WaveFunctionCollapse : MonoBehaviour
             //Wenn dieser Nachbar existiert und noch nicht besetzt ist, wird er als Nachbar markiert
             neighborNegY.gameObject.GetComponent<Cell>().isNeighbor = true;
 
-            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu Löschen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
+            //In dieser Liste werden alle nicht passenden Tiles gesammelt, um sie dann zu L?schen, ohne dabei die Reihenfolge der moegliche Tile Liste der Cell waehrend der Pruefung zu veraendern
             List<TileData> invalidNeighborList = new List<TileData>();
 
             //Vergleiche das NegY Socket von der aktuellen besetzten Zelle mit allen moeglichen PosY Socket der Tile Liste vom Nachbar 
