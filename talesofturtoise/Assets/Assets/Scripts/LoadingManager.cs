@@ -7,13 +7,13 @@ public class LoadingManager : MonoBehaviour
 {
     /*
      * Loading Manager
-     * Die Idee ist, dass eine andere art von LAdebalken visualisiert werden soll. Waehrend die Wave Function Collpase generiert, 
+     * Die Idee ist, dass eine andere Art von Ladebalken visualisiert werden soll. Waehrend die Wave Function Collpase generiert, 
      * soll die Schildkroete den Weg dzum neuen Biom ablaufen. Die Umgebnung soll sich dabei stetig zum neuen Biom umwandeln in farbe 
      * und ggf. Assetplatzierung je nach prozentualen Fortschritt der Wave Function Collapse ueberblenden.
      * 
      * Im Hintergrund, da die Kamera das neue Level noch nicht "sieht", wird das neue Level addaptiv geladen.
      * 
-     * Wahrend das neue Level laed laueft die Schildkroete entlang eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
+     * Waehrend das neue Level laed laueft die Schildkroete entlang eines Pfads, der alle 3 Sekunden um ein loadingObj verlaengert wird und je nach prozentualen Stand eine neue Farbstufe blendet.
      * 
      * Wenn die Wave Function Collapse in einen kritischen Zustand kommt, wird die Szene erneut geladen.
      * *
